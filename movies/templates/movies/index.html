@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'movies/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <title>Movies</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar-container">
+        <a href="#" class="logo">
+            <i class='bx bxs-movie'></i>Movies
+        </a>
+        <ul class="navbar">
+            <li><a href="#" class="acceuil-active">Accueil</a></li>
+            <li><a href="#">Films</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Newsletter</a></li>
+        </ul>
+        <div class="recherche">
+            <i class='bx bx-search-alt-2'></i>
+            <input type="text" placeholder="Rechercher..." id="recherche_input">
+        </div>
+        <a href="#" class="connexion">Se connecter</a>
+    </header>
+
+    <!-- Swiper Section -->
+    <section class="home-swiper" id="home">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide contenu">
+                <iframe 
+                    width="180%" 
+                    height="10%" 
+                    src="https://www.youtube.com/embed/yCg8WNQwe0A?autoplay=1&mute=1&loop=1&playlist=yCg8WNQwe0A&start=5" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+                </iframe>
+                <div class="home-text">
+                    <h1 id="titre">Father of the Bride Part II</h1>
+                    <p class="description">George Banks et sa petite famille sont de retour ! ...</p>
+                    <div class="details">
+                        <h5 class="genre">Comédie</h5>
+                        <span class="vertical-bar"></span> <!-- Barre verticale -->
+                        <h4 class="year">1995</h4>
+                    </div>
+                    <div class="b">
+                        <a href="#" id="panier">
+                            <i class="bi bi-cart2"></i>
+                        </a>
+                        <a href="#" id="favoris">
+                            <i class="fa-regular fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide contenu">
+                <iframe 
+                    width="180%" 
+                    height="10%" 
+                    src="https://www.youtube.com/embed/EHbvZ1FBqjI?autoplay=1&mute=1&loop=1&playlist=EHbvZ1FBqjI&start=5" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+                </iframe>
+                <div class="home-text">
+                    <h1 id="titre">Ipcress File, The</h1>
+                    <p class="description">
+                        Un prestigieux scientifique s’est fait enlever dans une gare de Londres. Malgré des antécédents peu glorieux, 
+                        Harry Palmer, des services secrets militaires britanniques, est chargé de l’affaire par son supérieur, 
+                        le colonel Ross, au service du contre-espionnage. Palmer ne tarde pas à mettre la main sur une bande 
+                        magnétique intitulée IPCRESS sur laquelle sont enregistrés d’étranges sons...
+                    </p>
+                    <div class="details">
+                        <h5 class="genre">Thriller</h5>
+                        <span class="vertical-bar"></span> <!-- Barre verticale -->
+                        <h4 class="year">1965</h4>
+                    </div>
+                    <div class="b">
+                        <a href="#" id="panier">
+                            <i class="bi bi-cart2"></i>
+                        </a>
+                        <a href="#" id="favoris">
+                            <i class="fa-regular fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+
+
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+
+</html>

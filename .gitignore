@@ -1,0 +1,19 @@
+# Environnement virtuel
+venv/
+env/
+
+# Fichiers de configuration locaux
+*.sqlite3
+*.pyc
+__pycache__/
+
+# Migrations inutiles
+*/migrations/*
+
+# Fichiers statiques et médias générés
+staticfiles/
+media/
+
+# Fichiers et dossiers spécifiques à votre IDE
+.idea/
+.vscode/

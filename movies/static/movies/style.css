@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    font-family: 'Jost', sans-serif; /* Applique "Jost" pour tout le corps de la page */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+}
+
+:root{
+    --main-color: #c0a483;
+    --text-color: #0a0a0a;
+    --bg-color:#fff;
+}
+
+body {
+    
+    background:  none /* Fond semi-transparent */;
+    color: rgba(165, 13, 13, 0.5); /* Fond semi-transparent */;
+}
+section{
+    padding: 4.5rem 0 1.5rem;
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    /*border: 1px solid #ffffff00;*/
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 100px;
+    transition: 0.5s;
+    background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+}
+
+
+
+
+
+.logo{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e9d4d4;
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    z-index: 10; /* Plus grand que -1 */
+}
+
+.logo .bx{
+    font-size: 24px;
+    color: #1a0d0d;
+}
+
+.navbar{
+    display: flex;
+    column-gap: 5rem;
+    color: #0a0a0a;
+}
+
+.navbar li{
+    position: relative;
+}
+
+.navbar a {
+    position: relative;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(243, 246, 246);
+    padding: 5px 10px;
+    transition: color 0.4s ease;
+}
+
+.navbar a:hover {
+    color: #fff; /* Change la couleur du texte au survol */
+}
+
+.navbar a::after {
+    content: " ";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.4s ease;
+}
+
+.navbar a:hover::after,
+.navbar .acceuil-active::after {
+    width: 100%;
+}
+
+.connexion {
+    display: inline-block;
+    padding: 0.7rem 2rem; /* Ajuster le padding pour donner de l'espace autour du texte */
+    background-color: rgb(19, 20, 21); /* Fond transparent initialement */
+    color: var(--main-color); /* Couleur du texte */
+    font-weight: 600;
+    font-size: 1rem;
+    border: none; /* Bordure de la boîte */
+    border-radius: 0.5rem; /* Coins arrondis */
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease-in-out; /* Transition fluide pour l'effet */
+}
+
+.connexion:hover {
+    background-color: var(--main-color); /* Fond de la boîte au survol */
+    color: var(--bg-color); /* Texte de couleur claire au survol */
+    border-color: var(--main-color); /* Bordure qui reste de la même couleur */
+}
+
+.connexion i {
+    margin-right: 8px; /* Espacement entre l'icône et le texte */
+    font-size: 1.2rem; /* Taille de l'icône */
+}
+
+
+.recherche {
+    display: flex; /* Utilise flexbox pour aligner horizontalement */
+    align-items: center; /* Centre verticalement l'icône et le champ */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.recherche i {
+    font-size: 16px; /* Taille de l'icône */
+    color: #888; /* Couleur de l'icône */
+    margin-right: 8px; /* Espace entre l'icône et le champ */
+}
+
+.recherche input {
+    flex: 1; /* Permet au champ de prendre tout l'espace disponible */
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.recherche input::placeholder {
+    color: #aaa; /* Couleur du placeholder */
+}
+
+/* Swiper Section */
+.home-swiper{
+    
+        width: 100%;
+        height: 100vh; /* La section prend toute la hauteur de la fenêtre */
+        position: relative; /* Pour positionner les éléments à l'intérieur */
+        display: flex;
+        align-items: center; /* Centrer le contenu de la section */
+        justify-content: center;
+  
+    
+}
+
+.swiper-wrapper{
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #121112;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.contenu {
+    position: relative; /* Pour permettre à l'iframe de se positionner */
+    width: 50%; /* La largeur prend toute la fenêtre */
+    height: 100%; /* La hauteur prend toute la fenêtre */
+    overflow: hidden; /* Cache les débordements */
+    z-index: -1; /* Place la vidéo en arrière-plan */
+}
+
+
+.contenu iframe {
+    position: absolute;
+    width: 555%;
+    height: 160vh;
+    top: -50vh; /* Déplace la vidéo de 20% de la hauteur de la fenêtre */
+    left: -420vh;
+    right: -415vh;
+    bottom: -10vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.home-text {
+    position: absolute; /* Pour positionner la description relativement à l'iframe */
+    top: 15%; /* Décale la description vers le bas (ajustez selon votre besoin) */
+    left: 5%; /* Vous pouvez ajuster la position horizontale */
+    color: #fff; /* Couleur du texte */
+ 
+}
+
+.home-text h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.home-text p {
+    font-size: 25px;
+    line-height: 1.5;
+}
+
+.details {
+    display: flex;
+    align-items: center; /* Centrer verticalement les éléments */
+    
+    font-size: 14px;
+    color: #ccc;
+}
+
+.details .genre,
+.details .year {
+    margin: 0;
+}
+
+.vertical-bar {
+    height: 20px; /* Hauteur de la barre */
+    width: 2px; /* Largeur de la barre */
+    background-color: #ccc; /* Couleur de la barre */
+    margin: 0 10px; /* Espacement de part et d'autre de la barre */
+}
+
+.b{
+   
+        margin-top: 20px;
+        display: flex;
+        align-items: center; /* Aligne verticalement les icônes */
+        justify-content: flex-start; /* Aligne tout à gauche */
+        gap: 10px; /* Espace entre les icônes */
+    
+}
+.b a{
+    padding: 8px 12px;
+    font-size: 15px;
+    font-weight: 600;
+    background:   rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-flex; /* S'assure que les icônes et le style sont bien visibles */
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
