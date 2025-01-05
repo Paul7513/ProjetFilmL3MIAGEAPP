@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: 'Jost', sans-serif; /* Applique "Jost" pour tout le corps de la page */
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --main-color: #c0a483;
+    --text-color: #0a0a0a;
+    --bg-color: #fff;
+}
+
+body {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto; /* Permet le défilement vertical automatique */
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;  /* Largeur de l'image sur toute la fenêtre */
+    height: 100vh; /* Hauteur de l'image sur toute la fenêtre */
+    object-fit: cover; /* L'image couvre toute la zone sans déformation */
+    z-index: -1; /* Assurez-vous que l'image est en arrière-plan */
+    filter: blur(10px);
+    box-shadow: -4px 4px 5px 0 #000;
+}
+
+
+
+
+section {
+    padding: 4.5rem 0 1.5rem;
+}
+
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 100px;
+    transition: 0.5s;
+    background: rgba(200, 183, 183, 0.5); /* Fond semi-transparent */
+}
+
+/* Autres styles comme ceux pour .logo, .navbar, etc. */
+.logo{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e9d4d4;
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    z-index: 10; /* Plus grand que -1 */
+}
+
+.logo .bx{
+    font-size: 24px;
+    color: #1a0d0d;
+}
+
+.navbar{
+    display: flex;
+    column-gap: 5rem;
+    color: #0a0a0a;
+}
+
+.navbar li{
+    position: relative;
+}
+
+.navbar a {
+    position: relative;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(243, 246, 246);
+    padding: 5px 10px;
+    transition: color 0.4s ease;
+}
+
+.navbar a:hover {
+    color: #fff; /* Change la couleur du texte au survol */
+}
+
+.navbar a::after {
+    content: " ";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.4s ease;
+}
+
+.navbar a:hover::after,
+.navbar .acceuil-active::after {
+    width: 100%;
+}
+
+.connexion {
+    display: inline-block;
+    padding: 0.7rem 2rem; /* Ajuster le padding pour donner de l'espace autour du texte */
+    background-color: rgb(19, 20, 21); /* Fond transparent initialement */
+    color: var(--main-color); /* Couleur du texte */
+    font-weight: 600;
+    font-size: 1rem;
+    border: none; /* Bordure de la boîte */
+    border-radius: 0.5rem; /* Coins arrondis */
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease-in-out; /* Transition fluide pour l'effet */
+}
+
+.connexion:hover {
+    background-color: var(--main-color); /* Fond de la boîte au survol */
+    color: var(--bg-color); /* Texte de couleur claire au survol */
+    border-color: var(--main-color); /* Bordure qui reste de la même couleur */
+}
+
+.connexion i {
+    margin-right: 8px; /* Espacement entre l'icône et le texte */
+    font-size: 1.2rem; /* Taille de l'icône */
+}
+
+
+.recherche {
+    display: flex; /* Utilise flexbox pour aligner horizontalement */
+    align-items: center; /* Centre verticalement l'icône et le champ */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.recherche i {
+    font-size: 16px; /* Taille de l'icône */
+    color: #888; /* Couleur de l'icône */
+    margin-right: 8px; /* Espace entre l'icône et le champ */
+}
+
+.recherche input {
+    flex: 1; /* Permet au champ de prendre tout l'espace disponible */
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.recherche input::placeholder {
+    color: #aaa; /* Couleur du placeholder */
+}
+
+
+
+.home-text {
+    position: absolute;
+    top: -7%;  /* Gardez la position de base */
+    left: 5%;  /* L'espace à gauche reste inchangé */
+    color: #fff; /* Texte en blanc pour contraster avec le fond sombre */
+    max-width: 40%; /* Limite la largeur de la description pour qu'elle ne prenne pas toute la largeur */
+    overflow: hidden; /* Cache tout texte qui déborde */
+    z-index: 2; /* Assurez-vous que le texte reste au-dessus de l'image */
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 2%;
+    padding-top: 20px;  /* Ajouter de l'espace au-dessus du texte */
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.home-text h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.home-text p {
+    font-size: 1.1rem;
+    line-height: 1.6; /* Espacement entre les lignes */
+    max-width: 100%; /* S'assure que le paragraphe ne dépasse pas du container */
+}
+
+/* Assurez-vous que le texte ne déborde pas */
+.home-text h1, .home-text p {
+    word-wrap: break-word; /* Permet aux mots longs de se couper et éviter les débordements */
+}
+
+
+.details {
+    display: flex;
+    align-items: center; /* Centrer verticalement les éléments */
+    
+    font-size: 14px;
+    color: #ccc;
+}
+
+.details .genre,
+.details .year {
+    margin-top: 2%;
+    color: white;
+}
+
+.vertical-bar {
+    height: 20px; /* Hauteur de la barre */
+    width: 2px; /* Largeur de la barre */
+    background-color: #ffffff; /* Couleur de la barre */
+    margin: 0 10px; /* Espacement de part et d'autre de la barre */
+    margin-top: 2%;
+}
+
+.b{
+   
+        margin-top: 20px;
+        display: flex;
+        align-items: center; /* Aligne verticalement les icônes */
+        justify-content: flex-start; /* Aligne tout à gauche */
+        gap: 10px; /* Espace entre les icônes */
+    
+}
+.b a{
+    padding: 8px 12px;
+    font-size: 15px;
+    font-weight: 600;
+    background:   rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-flex; /* S'assure que les icônes et le style sont bien visibles */
+    align-items: center;
+    justify-content: center;
+}
+
+#filmpop{
+    color: #611515;
+}
+.heading{
+    
+    color: #fff;
+   max-width: 968;
+   margin-left: auto;
+   margin-right: auto;
+   font-size: 1.2rem;
+   font-weight: 500;
+   text-transform: uppercase;
+    border-bottom: 1px solid var(--main-color);
+}
+
+
+
+.contenu-film{
+    max-width: 968px;
+    margin-right: auto;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Colonnes réactives */
+    gap: 1rem;
+    margin-top: 5rem;
+}
+
+
+
+
+
+.film-details {
+    display: flex;
+    flex-direction: column; /* Aligne les éléments verticalement */
+    justify-content: flex-start;
+    text-align: center; /* Centrer les textes */
+    color: #fff;
+    margin-top: 1rem;
+}
+
+.film-details h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.genre {
+    font-size: 0.9rem;
+    color: white;
+}
+
+.average-rating {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.stars i {
+    color: #ffc107; /* Couleur dorée pour les étoiles */
+    margin-right: 3px; /* Espacement entre les étoiles */
+    font-size: 14px; /* Ajuste la taille des étoiles */
+}
+
+/* Positionnement de l'image et de la barre verticale */
+.image {
+    position: relative; /* Nécessaire pour positionner la barre verticale par rapport à l'image */
+    margin-top: 15%; /* Marge au sommet de l'image */
+    margin-left: 55%; /* Positionner l'image à droite de l'écran */
+ 
+}
+
+.film-image {
+    height: 350px;
+    box-shadow: -4px 4px 5px 0 #000;
+}
+
+.vertical-bar-film {
+    position: absolute; /* Positionnement absolu */
+    margin: 0 10px; /* Espacement de part et d'autre de la barre */
+    top: 0; /* Commence en haut de l'image */
+    height: 98%; /* Hauteur égale à celle de l'image */
+    width: 2px; /* Largeur de la barre */
+    background-color: #ffffff; /* Couleur de la barre */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajouter un léger ombrage pour plus de visibilité */
+}
+
+.add-to-cart {
+    margin-top: 5%;
+    margin-left: 50%;
+    display: flex;
+    align-items: center; /* Aligne verticalement le texte et l'icône */
+    color: #fff;
+}
+
+.add-to-cart p {
+    font-size: 1.2rem;
+    margin-right: 10px; /* Espacement entre le texte et l'icône */
+}
+
+.add-to-cart i {
+    font-size: 1.5rem;
+    color: #ffffff; /* Couleur de l'icône */
+    cursor: pointer; /* Change le curseur pour indiquer que c'est interactif */
+}
+

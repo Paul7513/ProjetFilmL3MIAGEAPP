@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'movies/style2.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <title>{{ movie.title }}</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <img src="{{ movie.poster_url }}" alt="Image de fond" class="background-image">
+    <header class="navbar-container">
+        <a href="#" class="logo">
+            <i class='bx bxs-movie'></i>Movies
+        </a>
+        <ul class="navbar">
+            <li><a href="{% url 'home' %}" class="acceuil-active">Accueil</a></li>
+            <li><a href="#">Films</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Newsletter</a></li>
+        </ul>
+        <div class="recherche">
+            <i class='bx bx-search-alt-2'></i>
+            <input type="text" placeholder="Rechercher..." id="recherche_input">
+        </div>
+        <a href="#" class="connexion">Se connecter</a>
+    </header>
+
+    <!-- Contenu principal -->
+    <div class="home-text">
+        <h1>{{ movie.title }}</h1>
+        <p class="description">{{ movie.synopsis }}</p>
+        <div class="details">
+            <h5 class="genre">{{ movie.genre }}</h5>
+            <span class="vertical-bar"></span>
+            <h4 class="year">{{ movie.year }}</h4>
+                 <!-- Affichage des étoiles -->
+                 <div class="stars">
+                    {% for star in film.star_rating.full %}
+                        <i class="bx {{ star }}"></i> <!-- Étoile pleine -->
+                    {% endfor %}
+                    
+                    {% for star in film.star_rating.half %}
+                        <i class="bx {{ star }}"></i> <!-- Étoile moitié pleine -->
+                    {% endfor %}
+                    
+                    {% for star in film.star_rating.empty %}
+                        <i class="bx {{ star }}"></i> <!-- Étoile vide -->
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+
+    <!-- Affichage de l'affiche du film -->
+    <div class="image">
+        {% if movie.poster_url %}
+            <img class="film-image" src="{{ movie.poster_url }}" alt="Affiche de {{ movie.title }}">
+            
+        {% else %}
+            <p>Aucune affiche disponible pour ce film.</p>
+        {% endif %}
+        <span class="vertical-bar-film"> <div class="add-to-cart">
+            <p>Ajouter au panier</p>
+            <i class="bi bi-cart-plus"></i> <!-- Correct class for the cart icon -->
+         </div></span>
+     <!-- Texte et icône à droite de la barre verticale -->
+    
+ 
+    </div>
+    >
+
+    
+    
+
+   
+</body>
+
+</html>

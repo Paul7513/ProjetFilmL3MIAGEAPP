@@ -1,0 +1,350 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'movies/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <title>Movies</title>
+    <!-- Demo styles -->
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    body {
+      background: #000;
+      color: #000;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .swiper-slide {
+      background-size: cover;
+      background-position: center;
+    }
+
+    .mySwiper2 {
+      height: 80%;
+      width: 100%;
+    }
+
+    .mySwiper {
+      height: 20%;
+      box-sizing: border-box;
+      padding: 10px 0;
+    }
+
+    .mySwiper .swiper-slide {
+      width: 25%;
+      height: 100%;
+      opacity: 0.4;
+    }
+
+    .mySwiper .swiper-slide-thumb-active {
+      opacity: 1;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar-container">
+        <a href="#" class="logo">
+            <i class='bx bxs-movie'></i>Movies
+        </a>
+        <ul class="navbar">
+            <li><a href="#" class="acceuil-active">Accueil</a></li>
+            <li><a href="#">Films</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Newsletter</a></li>
+        </ul>
+        <div class="recherche">
+            <i class='bx bx-search-alt-2'></i>
+            <input type="text" placeholder="Rechercher..." id="recherche_input">
+        </div>
+        <a href="#" class="connexion">Se connecter</a>
+    </header>
+
+  
+</head>
+
+<body>
+  <!-- Swiper -->
+
+  <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide contenu">
+                <iframe
+                    class="video-1"
+                    width="180%"
+                    height="10%"
+                    src="https://www.youtube.com/embed/yCg8WNQwe0A?autoplay=1&mute=1&loop=1&playlist=yCg8WNQwe0A&start=5"
+                    frameborder="0"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen>
+                </iframe>
+                <div class="home-text">
+                    <h1 id="titre">Father of the Bride Part II</h1>
+                    <p class="description">George Banks et sa petite famille sont de retour ! ...</p>
+                    <div class="details">
+                        <h5 class="genre">Comédie</h5>
+                        <span class="vertical-bar"></span> <!-- Barre verticale -->
+                        <h4 class="year">1995</h4>
+                    </div>
+                    <div class="b">
+                        <a href="#" id="panier">
+                            <i class="bi bi-cart2"></i>
+                        </a>
+                        <a href="#" id="favoris">
+                            <i class="fa-regular fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Vidéo 2 -->
+        <div class="swiper-slide contenu">
+                <iframe
+                class="video-2"
+                width="160%"
+                height="10%"
+                src="https://www.youtube.com/embed/Pc6p72O4p44?autoplay=1&mute=1&loop=1&controls=0&start=0&end=113"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
+                </iframe>
+                <div class="home-text">
+                    <h1 id="titre">Flirting With Disaster</h1>
+                    <p class="description">À la recherche de ses racines, Mel Coplin plonge dans un passé oublié...</p>
+                    <div class="details">
+                        <h5 class="genre">Comédie</h5>
+                        <span class="vertical-bar"></span> <!-- Barre verticale -->
+                        <h4 class="year">1995</h4>
+                    </div>
+                    <div class="b">
+                        <a href="#" id="panier">
+                            <i class="bi bi-cart2"></i>
+                        </a>
+                        <a href="#" id="favoris">
+                            <i class="fa-regular fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+             <!-- Vidéo 3 -->
+
+            <div class="swiper-slide contenu">
+                
+                  
+                    <iframe
+                    class="video-1"
+                    width="180%"
+                    height="10%"
+                    src="https://www.youtube.com/embed/Ur_DIHs92NM?autoplay=1&mute=1&loop=1&playlist=Ur_DIHs92NM&start=5"
+                    frameborder="0"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen>
+                </iframe>
+                </iframe>
+                <div class="home-text">
+                    <h1 id="titre">Orgueil et Prejuge</h1>
+                    <p class="description">
+                        Une romance passionnée où l'orgueil et les préjugés défient les cœurs.
+                    </p>
+                    <div class="details">
+                        <h5 class="genre">Comédie, Romance</h5>
+                        <span class="vertical-bar"></span> <!-- Barre verticale -->
+                        <h4 class="year">2005</h4>
+                    </div>
+                    <div class="b">
+                        <a href="#" id="panier">
+                            <i class="bi bi-cart2"></i>
+                        </a>
+                        <a href="#" id="favoris">
+                            <i class="fa-regular fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vidéo 4 -->
+
+            <div class="swiper-slide contenu">
+              <iframe
+                  class="video-4"
+                  width="180%"
+                  height="10%"
+                  src="https://www.youtube.com/embed/UxUTTrU6PA4?autoplay=1&mute=1&loop=1&playlist=UxUTTrU6PA4&start=5"
+                  frameborder="0"
+                  allow="autoplay; encrypted-media"
+                  allowfullscreen>
+              </iframe>
+              <div class="home-text">
+                  <h1 id="titre">Men In Black</h1>
+                  <p class="description">George Banks et sa petite famille sont de retour ! ...</p>
+                  <div class="details">
+                      <h5 class="genre">Action</h5>
+                      <span class="vertical-bar"></span> <!-- Barre verticale -->
+                      <h4 class="year">1997</h4>
+                  </div>
+                  <div class="b">
+                      <a href="#" id="panier">
+                          <i class="bi bi-cart2"></i>
+                      </a>
+                      <a href="#" id="favoris">
+                          <i class="fa-regular fa-heart"></i>
+                      </a>
+                  </div>
+              </div>
+          </div>
+
+            <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+            </div>
+
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+  </div>
+  <div thumbsSlider="" class="swiper mySwiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.VKQFL66Wdn65Rv8GH7AzKAHaEK&pid=Api&P=0&h=180" />
+          </div>
+      <div class="swiper-slide">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.c54KNBkkAfdK25V18Est3AHaEK&pid=Api&P=0&h=180" />
+      </div>
+      
+      <div class="swiper-slide">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.t3t801S_zLyKmmCUHeWrAgHaEN&pid=Api&P=0&h=180" />
+      </div>
+
+      <div class="swiper-slide">
+        <img src="https://tse1.mm.bing.net/th?id=OIP.4OotFvwOt8mRnNwyanVCKAHaEK&pid=Api&P=0&h=180" />
+      </div>
+      
+    </div>
+  </div>
+
+  <section class="filmpop" id="filmpop">
+    <h2 class="heading">Les plus populaires</h2>
+    <div class="contenu-film">
+        <!-- Boucle pour afficher chaque film populaire -->
+        {% for film in films|slice:":100" %}
+        <div class="box">
+            <div class="box-img">
+              <!-- Ajout du lien autour de l'image -->
+              <a href="{% url 'movie_detail' movie_id=film.id %}">  
+                  <!-- Utilisez le bon champ pour l'URL de l'image -->
+                  <img src="{{ film.poster_url }}" alt="{{ film.title }}">
+              </a>
+            </div>
+            <div class="film-details">
+               <!-- Ajout du lien autour du titre -->
+              <a href="{% url 'movie_detail' movie_id=film.id %}">
+                  <h3>{{ film.title }} ({{ film.year }})</h3>
+              </a>
+                <span class="genre">{{ film.genre }}</span>
+                <p class="average-rating">Note Moyenne : {{ film.average_rating|floatformat:1 }}/5</p>
+                
+                <!-- Affichage des étoiles -->
+            <div class="stars">
+              {% for star in film.star_rating.full %}
+                  <i class="bx {{ star }}"></i> <!-- Étoile pleine -->
+              {% endfor %}
+              
+              {% for star in film.star_rating.half %}
+                  <i class="bx {{ star }}"></i> <!-- Étoile moitié pleine -->
+              {% endfor %}
+              
+              {% for star in film.star_rating.empty %}
+                  <i class="bx {{ star }}"></i> <!-- Étoile vide -->
+              {% endfor %}
+          </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      spaceBetween: 10,
+      slidesPerView: 4,
+      freeMode: true,
+      watchSlidesProgress: true,
+    });
+    var swiper2 = new Swiper(".mySwiper2", {
+      spaceBetween: 10,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      thumbs: {
+        swiper: swiper,
+      },
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Register</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <!-- Django render form fields -->
+            {{ form.as_p }}
+            
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+
+        <!-- Back to login -->
+        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+    </div>
+</body>
+</html>
+
+    <p>Vous avez déjà un compte ? <a href="{% url 'login' %}">Se connecter</a></p>
+</body>
+</html>
