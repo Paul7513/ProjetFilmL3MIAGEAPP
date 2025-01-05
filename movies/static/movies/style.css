@@ -19,9 +19,14 @@
 
 body {
     
+<<<<<<< HEAD
     background: var(--text-color) /* Fond semi-transparent */;
     color: #fff;
     
+=======
+    background:  none /* Fond semi-transparent */;
+    color: rgba(165, 13, 13, 0.5); /* Fond semi-transparent */;
+>>>>>>> e4c9ae1d8beb53df1c5ede2797e9b001398f7e5e
 }
 section{
     padding: 4.5rem 0 1.5rem;
@@ -161,7 +166,11 @@ header{
         display: flex;
         align-items: center; /* Centrer le contenu de la section */
         justify-content: center;
+<<<<<<< HEAD
         padding-bottom: 0rem;
+=======
+  
+>>>>>>> e4c9ae1d8beb53df1c5ede2797e9b001398f7e5e
     
 }
 
@@ -188,19 +197,28 @@ header{
 }
 
 
+<<<<<<< HEAD
 /*.contenu iframe */
 .video-1{
+=======
+.contenu iframe {
+>>>>>>> e4c9ae1d8beb53df1c5ede2797e9b001398f7e5e
     position: absolute;
     width: 555%;
     height: 160vh;
     top: -50vh; /* Déplace la vidéo de 20% de la hauteur de la fenêtre */
+<<<<<<< HEAD
     left: -423vh;
+=======
+    left: -420vh;
+>>>>>>> e4c9ae1d8beb53df1c5ede2797e9b001398f7e5e
     right: -415vh;
     bottom: -10vh;
     object-fit: cover;
     z-index: -1;
 }
 
+<<<<<<< HEAD
 .video-2 {
     position: absolute;
     width: 519%;
@@ -237,6 +255,8 @@ header{
     z-index: -1;
 }
 
+=======
+>>>>>>> e4c9ae1d8beb53df1c5ede2797e9b001398f7e5e
 .home-text {
     position: absolute; /* Pour positionner la description relativement à l'iframe */
     top: 15%; /* Décale la description vers le bas (ajustez selon votre besoin) */
@@ -245,18 +265,25 @@ header{
  
 }
 
+<<<<<<< HEAD
 
 .home-text h1 {
     display: flex;
     position: relative;
+=======
+.home-text h1 {
+>>>>>>> e4c9ae1d8beb53df1c5ede2797e9b001398f7e5e
     font-size: 50px;
     margin-bottom: 10px;
 }
 
 .home-text p {
+<<<<<<< HEAD
     position: relative;
     display: flex;
     align-items: center;
+=======
+>>>>>>> e4c9ae1d8beb53df1c5ede2797e9b001398f7e5e
     font-size: 25px;
     line-height: 1.5;
 }
@@ -303,6 +330,7 @@ header{
     justify-content: center;
 }
 
+<<<<<<< HEAD
 #filmpop{
     color: #611515;
 }
@@ -377,6 +405,10 @@ header{
     margin-right: 3px; /* Espacement entre les étoiles */
     font-size: 14px; /* Ajuste la taille des étoiles */
 }
+=======
+
+
+>>>>>>> e4c9ae1d8beb53df1c5ede2797e9b001398f7e5e
 
 
 
