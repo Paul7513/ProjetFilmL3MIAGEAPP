@@ -6,7 +6,7 @@ from .views import top_rated_movies_view  # Import de la vue
 urlpatterns = [
     # Page d'inscription
     path('register/', views.register, name='register'), 
-
+    
     # Page d'accueil
     path('', views.home, name='home'),  
 
@@ -31,5 +31,7 @@ urlpatterns = [
     path('index/', views.index, name='index'),  # Nouvelle vue pour votre fichier
 
      path('article/<int:movie_id>/', views.movie_detail, name='movie_detail'),
-    
+  
+  
+    path('movie/<int:movie_id>/add_to_wishlist/', views.add_to_wishlist, name='add_to_wishlist'),
 ]

@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from movies.models import UserProfile
 
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput, label="Password")
-    confirm_password = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}), label="Password")
+    confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}), label="Confirm Password")
 
     GENDER_CHOICES = [('M', 'Male'), ('F', 'Female')]
     AGE_GROUP_CHOICES = [
@@ -41,8 +41,8 @@ class UserRegistrationForm(forms.ModelForm):
     ]
 
     gender = forms.ChoiceField(choices=GENDER_CHOICES, label="Gender")
-    age = forms.ChoiceField(choices=AGE_GROUP_CHOICES, label="Age Group")
-    occupation = forms.ChoiceField(choices=OCCUPATION_CHOICES, label="Occupation")
+    age = forms.ChoiceField(choices=AGE_GROUP_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}), label="Age Group")
+    occupation = forms.ChoiceField(choices=OCCUPATION_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}), label="Occupation")
 
     class Meta:
         model = User

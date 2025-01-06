@@ -13,6 +13,7 @@ class Movie(models.Model):
     trailer_url = models.URLField(max_length=500, null=True, blank=True)  # URL de la bande-annonce
     price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)  # Prix du film (par exemple 19.99)
 
+    
 # class Movie(models.Model):
 #     title = models.CharField(max_length=255)
 #     genre = models.CharField(max_length=100)

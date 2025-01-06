@@ -35,9 +35,6 @@ body {
 
 
 
-section {
-    padding: 4.5rem 0 1.5rem;
-}
 
 
 header {
@@ -184,11 +181,7 @@ header {
     margin-bottom: 10px;
 }
 
-.home-text p {
-    font-size: 1.1rem;
-    line-height: 1.6; /* Espacement entre les lignes */
-    max-width: 100%; /* S'assure que le paragraphe ne dépasse pas du container */
-}
+
 
 /* Assurez-vous que le texte ne déborde pas */
 .home-text h1, .home-text p {
@@ -290,17 +283,28 @@ header {
     color: white;
 }
 
-.average-rating {
-    font-size: 1rem;
-    margin: 0.5rem 0;
+.box {
+  
+    display: flex;
+   margin-top: 9px;
+    align-items: center;
+    gap: 10px; /* Espace entre l'input et le bouton */
+}
+
+.stars{
+    margin-left: 0px;
 }
 
 .stars i {
     color: #ffc107; /* Couleur dorée pour les étoiles */
-    margin-right: 3px; /* Espacement entre les étoiles */
-    font-size: 14px; /* Ajuste la taille des étoiles */
+    
+    font-size: 11px; /* Ajuste la taille des étoiles */
 }
-
+.average-rating {
+    font-size: 0.7px;
+    color: #ffffff;
+    font-size: 0.9rem;
+}
 /* Positionnement de l'image et de la barre verticale */
 .image {
     position: relative; /* Nécessaire pour positionner la barre verticale par rapport à l'image */
@@ -314,32 +318,198 @@ header {
     box-shadow: -4px 4px 5px 0 #000;
 }
 
+
+
 .vertical-bar-film {
     position: absolute; /* Positionnement absolu */
     margin: 0 10px; /* Espacement de part et d'autre de la barre */
+    margin-left: 260px;
     top: 0; /* Commence en haut de l'image */
-    height: 98%; /* Hauteur égale à celle de l'image */
+    height: 89%; /* Hauteur égale à celle de l'image */
     width: 2px; /* Largeur de la barre */
     background-color: #ffffff; /* Couleur de la barre */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ajouter un léger ombrage pour plus de visibilité */
+    box-shadow: 0 13px 10px rgba(0, 0, 0, 0.5); /* Ajouter un léger ombrage pour plus de visibilité */
+    display: inline-block; /* Aligner horizontalement */
 }
 
 .add-to-cart {
-    margin-top: 5%;
-    margin-left: 50%;
     display: flex;
-    align-items: center; /* Aligne verticalement le texte et l'icône */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center;
+    gap: 10px; /* Espace entre l'input et le bouton */
+    margin-top: 10px; /* Espacement entre l'image et la zone d'ajout */
+}
+
+.d-flex {
+    display: flex !important;
+    margin-top: 5px;
+    gap: 4px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 3px 0px 3px 0px; /* Réduire l'espacement interne pour un bouton plus petit */
+    font-size: 0.9rem; 
+    font-weight: 400;
+    line-height: 1;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+/* Style du bouton "Ajouter au panier" sans fond, avec une bordure noire */
+.btn-add-to-cart {
+    display: flex;
+    align-items: center;
+    padding: 3px 3px 3px 3px;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: transparent; /* Pas de fond */
+    color: #000; /* Couleur du texte (noir) */
+    border: 2px solid #000; /* Bordure noire */
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Animation au survol */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: 3%;
+}
+
+
+
+/* Style de l'icône */
+.btn-add-to-cart i {
+    margin-right: 5px; /* Espacement entre l'icône et le texte */
+}
+
+
+/* Effet au survol du bouton */
+.btn-add-to-cart:hover {
+    background-color: #000000; /* Couleur plus foncée au survol */
+    color: #ffffff; /* Couleur du texte au survol (bleu) */
+
+}
+
+/* Style de l'icône */
+.btn-add-to-cart i {
+    margin-right: 5px; /* Espacement entre l'icône et le texte */
+}
+
+/* Icône du cœur : positionné absolu par rapport à son parent (l'image) */
+.heart-icon {
+    margin-left: -31px;
+    position: absolute;
+    top: 10px;  /* Ajustez la position verticale (10px depuis le haut de l'image) */
+     /* Ajustez la position horizontale (10px depuis la droite de l'image) */
+    font-size: 20px; /* Taille de l'icône, ajustez selon vos préférences */
+    color: #ffc107;/* Couleur de l'icône, vous pouvez la personnaliser */
+    background-color: rgba(0, 0, 0, 0.6); /* Optionnel : ajout d'un fond transparent pour la lisibilité */
+    border-radius: 50%; /* Optionnel : bord arrondi autour de l'icône */
+    padding: 4px 3px 2px 3px; /* Espacement autour de l'icône */
+    transition: transform 0.3s ease; /* Animation douce pour le survol */
+}
+
+/* Effet au survol : l'icône grandit légèrement */
+.heart-icon:hover {
+    transform: scale(1.2); /* Grossit l'icône quand on survole */
+}
+
+#inputQuantity {
+    max-width: 3rem;
+    text-align: center;
+    padding-left: -3%;
+    padding-right: -3%;
+}
+
+section{
+    position: relative;
+    top: 100px; /* Ajustez la valeur pour déplacer plus bas */
+    width: 100%;
+    height: auto;
+    padding: 0px 0px;
+    bottom: 20px;
     color: #fff;
 }
-
-.add-to-cart p {
-    font-size: 1.2rem;
-    margin-right: 10px; /* Espacement entre le texte et l'icône */
+section .cards{
+   position: relative;
+   width: 100%;
+   height: 200px;
+  margin-left: 75px;
+   margin-top: 10px;
+   display: flex;
+   align-items: center;
+   overflow-x: auto;
+   scroll-behavior: smooth;
 }
 
-.add-to-cart i {
-    font-size: 1.5rem;
-    color: #ffffff; /* Couleur de l'icône */
-    cursor: pointer; /* Change le curseur pour indiquer que c'est interactif */
+section .cards::-webkit-scrollbar{
+   display: none;
+ }
+
+section .cards .card{
+    position: relative;
+    min-width: 130px;
+    height: 180px;
+    
+    border-radius: 8px;
+    margin-right: 10px;
+    background: #000;
+    transition: .3s linear;
+ }
+
+ section .cards .card .poster{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 30px;
+    border-radius: 8px; 
+ }
+
+ 
+
+
+
+section .bx-chevron-left, .bx-chevron-right{
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    width: 25px;
+    height: 25px;
+    background: rgb(255, 255, 255,.3);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 12px;
+    cursor: pointer;
+    transition: .3s linear;
+    z-index: 999999999;
+    opacity: 0;
 }
 
+section .bx-chevron-right{
+    left: unset;
+    right: 3%;
+    align-items: center;
+    justify-content: center;
+}
+
+section:hover .bx-chevron-right{
+    opacity: 1;
+}
+
+section:hover .bx-chevron-left{
+    opacity: 1;
+}
+
+section h2{
+    margin-left: 75px;
+    background-color: rgba(0, 0, 0, 0.1);
+
+}
