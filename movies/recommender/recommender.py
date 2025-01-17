@@ -9,7 +9,7 @@ def recommend_movies(user_id, user_similarity_df, user_movie_matrix, k=5):
         k (int): Le nombre de voisins les plus proches à considérer.
 
     Returns:
-        pd.Series: Une liste classée de recommandations de films avec des scores.
+        list: Une liste des IDs des films recommandés.
     """
     # Étape 1 : Trouver les k plus proches voisins
     user_similarities = user_similarity_df.loc[user_id]
@@ -18,11 +18,9 @@ def recommend_movies(user_id, user_similarity_df, user_movie_matrix, k=5):
     k_nearest_neighbors = user_similarities.sort_values(ascending=False).iloc[1:k+1]
     
     # Étape 3 : Obtenir les notes des k plus proches voisins
-    # Convertir les indices en entiers pour correspondre à l'index de user_movie_matrix
     neighbors_ratings = user_movie_matrix.loc[k_nearest_neighbors.index.astype(int)]
     
     # Étape 4 : Calculer la moyenne pondérée des notes pour chaque film
-    # Pondérer par les scores de similarité
     weighted_ratings = neighbors_ratings.T.dot(k_nearest_neighbors.values)
     total_similarity = k_nearest_neighbors.sum()
     movie_scores = weighted_ratings / total_similarity
@@ -34,4 +32,5 @@ def recommend_movies(user_id, user_similarity_df, user_movie_matrix, k=5):
     # Étape 6 : Trier les films par les scores les plus élevés
     recommended_movies = movies_to_recommend.sort_values(ascending=False)
     
-    return recommended_movies
+    # Retourner la liste des IDs des films recommandés
+    return recommended_movies.index.tolist()

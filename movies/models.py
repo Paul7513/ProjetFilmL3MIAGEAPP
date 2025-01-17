@@ -27,6 +27,17 @@ def __str__(self):
 def __str__(self):
     return self.title
 
+class CartItem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # Lien avec l'utilisateur
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)  # Lien avec le film
+    quantity = models.PositiveIntegerField(default=1)  # Quantité choisie par l'utilisateur
+
+    def total_price(self):
+        return self.quantity * self.movie.price
+
+    def __str__(self):
+        return f"{self.movie.title} - {self.quantity} x {self.movie.price}€" 
+
 class Wishlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
@@ -53,21 +64,24 @@ class Rating(models.Model):
 #         return f"Order by {self.user.username} for {self.movie.title}"
 
 class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL) 
     order_date = models.DateTimeField(auto_now_add=True)
-    quantity = models.PositiveIntegerField()
-    total_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    status = models.CharField(max_length=50, choices=[('pending', 'Pending'), ('completed', 'Completed')])
+    status = models.CharField(max_length=50)
     tracking_number = models.CharField(max_length=100, null=True, blank=True)
 
-    def save(self, *args, **kwargs):
-        # Calculer automatiquement le prix total basé sur le prix du film et la quantité
-        self.total_price = self.quantity * self.movie.price  # Assurez-vous que le modèle Movie a un champ price
-        super().save(*args, **kwargs)
+    def __str__(self):
+        return f"Order {self.id} by {self.user.username}"
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name='order_items', on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+    price_per_item = models.DecimalField(max_digits=6, decimal_places=2)
+    total_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)  # Permet les valeurs NULL
 
     def __str__(self):
-        return f"Order by {self.user.username} for {self.movie.title} - {self.status}"
+        return f"{self.quantity} x {self.movie.title} for Order {self.order.id}"
 
 
 class UserProfile(models.Model):

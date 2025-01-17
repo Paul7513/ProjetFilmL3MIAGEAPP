@@ -1,0 +1,20 @@
+
+{% block content %}
+  <h2>Mettre à jour votre profil</h2>
+
+  <!-- Affichage des messages de succès ou d'erreur -->
+  {% if messages %}
+    <div class="alert alert-success">
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- Formulaire de mise à jour -->
+  <form method="POST" action="{% url 'update_profile' %}">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Affiche le formulaire sous forme de paragraphe -->
+    <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+  </form>
+{% endblock %}

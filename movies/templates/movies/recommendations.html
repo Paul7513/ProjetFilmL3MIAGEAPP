@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommandations de films</title>
+</head>
+<body>
+    <h1>Films recommandés</h1>
+    <ul>
+        {% for movie in recommended_movies %}
+            <li>
+                <strong>{{ movie.title }}</strong><br>
+                Genre: {{ movie.genre }}<br>
+                Année: {{ movie.year }}<br>
+                <a href="{{ movie.poster_url }}" target="_blank">Voir l'affiche</a><br>
+                <a href="{{ movie.trailer_url }}" target="_blank">Voir la bande-annonce</a><br>
+                <p>{{ movie.synopsis }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

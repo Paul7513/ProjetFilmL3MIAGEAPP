@@ -11,6 +11,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     
     <title>Movies</title>
     <!-- Demo styles -->
@@ -107,15 +108,20 @@
         </a>
         <ul class="navbar">
             <li><a href="#" class="acceuil-active">Accueil</a></li>
-            <li><a href="#">Films</a></li>
-            <li><a href="#">Services</a></li>
+            <li><a href="{% url 'films' %}">Films</a></li>
+            <li><a href="{% if user.is_authenticated %}{% url 'suggestion' %}{% else %}{% url 'login' %}{% endif %}">Pour-vous</a></li>
             <li><a href="#">Newsletter</a></li>
+            <li><a href="#">Services</a></li>
         </ul>
         <div class="recherche">
             <i class='bx bx-search-alt-2'></i>
             <input type="text" placeholder="Rechercher..." id="recherche_input">
         </div>
         <a href="{% if user.is_authenticated %}{% url 'dashboard' %}{% else %}{% url 'login' %}{% endif %}" class="connexion">Profil</a>
+         <!-- Conteneur dédié avec lien cliquable -->
+          <a href="{% url 'panier' %}" class="shopping-bag">
+            <i class='bx bx-shopping-bag'></i>
+        </a>
     </header>
 
   

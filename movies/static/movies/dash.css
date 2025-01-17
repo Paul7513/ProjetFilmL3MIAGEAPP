@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    font-family: 'Jost', sans-serif; /* Applique "Jost" pour tout le corps de la page */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+}
+
+:root{
+    --main-color: #c0a483;
+    --text-color: #0a0a0a;
+    --bg-color:#fff;
+}
+
+body {
+    
+    background: var(--text-color) /* Fond semi-transparent */;
+    color: #fff;
+    
+}
+section{
+    padding: 4.5rem 0 1.5rem;
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    /*border: 1px solid #ffffff00;*/
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 100px;
+    transition: 0.5s;
+    background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+}
+
+
+
+
+
+.logo{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e9d4d4;
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    z-index: 10; /* Plus grand que -1 */
+}
+
+.logo .bx{
+    font-size: 24px;
+    color: #1a0d0d;
+}
+
+.navbar{
+    display: flex;
+    column-gap: 5rem;
+    color: #0a0a0a;
+}
+
+.navbar li{
+    position: relative;
+}
+
+.navbar a {
+    position: relative;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(243, 246, 246);
+    padding: 5px 10px;
+    transition: color 0.4s ease;
+}
+
+.navbar a:hover {
+    color: #fff; /* Change la couleur du texte au survol */
+}
+
+.navbar a::after {
+    content: " ";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.4s ease;
+}
+
+.navbar a:hover::after,
+.navbar .acceuil-active::after {
+    width: 100%;
+}
+
+.connexion {
+    display: inline-block;
+    padding: 0.7rem 2rem; /* Ajuster le padding pour donner de l'espace autour du texte */
+    background-color: rgb(19, 20, 21); /* Fond transparent initialement */
+    color: var(--main-color); /* Couleur du texte */
+    font-weight: 600;
+    font-size: 1rem;
+    border: none; /* Bordure de la boîte */
+    border-radius: 0.5rem; /* Coins arrondis */
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease-in-out; /* Transition fluide pour l'effet */
+}
+
+.connexion:hover {
+    background-color: var(--main-color); /* Fond de la boîte au survol */
+    color: var(--bg-color); /* Texte de couleur claire au survol */
+    border-color: var(--main-color); /* Bordure qui reste de la même couleur */
+}
+
+.connexion i {
+    margin-right: 8px; /* Espacement entre l'icône et le texte */
+    font-size: 1.2rem; /* Taille de l'icône */
+}
+
+
+.recherche {
+    display: flex; /* Utilise flexbox pour aligner horizontalement */
+    align-items: center; /* Centre verticalement l'icône et le champ */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.recherche i {
+    font-size: 16px; /* Taille de l'icône */
+    color: #888; /* Couleur de l'icône */
+    margin-right: 8px; /* Espace entre l'icône et le champ */
+}
+
+.recherche input {
+    flex: 1; /* Permet au champ de prendre tout l'espace disponible */
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.recherche input::placeholder {
+    color: #aaa; /* Couleur du placeholder */
+}
+
+
+/* Utilise flexbox pour un espacement homogène */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Ajoute un espacement entre les articles */
+    margin-bottom: 20px;
+}
+
+.card.shadow-0.border.mb-4 {
+    padding: 20px; /* Augmente l'espace interne */
+    border-radius: 10px; /* Optionnel : arrondir les coins */
+    margin-bottom: 20px; /* Espacement entre chaque carte */
+}
+
+h5{
+    color: #000;
+    
+}
+
+.card-body {
+    background-color: #000000; /* Couleur de fond gris clair */
+    color: #fff;
+
+}
+
+.card{
+    background-color: #000000;
+}
+
+
+

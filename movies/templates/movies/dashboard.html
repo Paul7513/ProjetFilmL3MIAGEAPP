@@ -1,12 +1,22 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
-{% include 'movies/navbar.html' %}
+
+<div class="alert alert-success">
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+</div>
+
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Utilisateur</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+     <!-- Ajout de la bibliothèque Boxicons -->
+     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+     <link rel="stylesheet" href="{% static 'movies/dash.css' %}">
     <style>
         header {
             position: fixed;
@@ -83,8 +93,8 @@
         }
 
         body {
-            background: #654ea3;
-            background: linear-gradient(to right, #e96443, #904e95);
+            background: #000000;
+            background: #000000;
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -99,18 +109,25 @@
             margin-top: 2rem;
         }
 
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centre le contenu horizontalement */
+            text-align: center;  /* Centre le texte */
+        }
+
         .box .box-img {
-            width: 100%;
-            height: 270px;
-            border-radius: 8px; 
-            min-width: 30px;
+            width: 120px;  /* Ajuster la largeur */
+            height: 180px; /* Ajuster la hauteur pour correspondre */
+            border-radius: 8px;
+            overflow: hidden;
         }
 
         .box .box-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            border-radius: 8px; 
+            object-fit: cover;  /* Garantir le recadrage sans déformation */
+            border-radius: 8px;
         }
 
         .box .box-img img:hover {
@@ -123,9 +140,61 @@
             margin-top: 10px;
             font-weight: bold;
         }
+
+        .box button {
+            padding: 8px 16px;
+            background-color: #e96443;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .box button:hover {
+            background-color: #904e95;
+        }
+
+        .edit-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #e96443;
+            transition: color 0.3s;
+        }
+
+        .edit-btn:hover {
+            color: #904e95;
+        }
+
     </style>
 </head>
 <body>
+     <!-- Navbar -->
+    <!-- Navbar -->
+    <header class="navbar-container">
+        <a href="#" class="logo">
+            <i class='bx bxs-movie'></i>Movies
+        </a>
+        <ul class="navbar">
+            <li><a href="#" class="acceuil-active">Accueil</a></li>
+            <li><a href="{% url 'films' %}">Films</a></li>
+            <li><a href="{% if user.is_authenticated %}{% url 'suggestion' %}{% else %}{% url 'login' %}{% endif %}">Pour-vous</a></li>
+            <li><a href="#">Newsletter</a></li>
+            <li><a href="#">Services</a></li>
+        </ul>
+        <div class="recherche">
+            <i class='bx bx-search-alt-2'></i>
+            <input type="text" placeholder="Rechercher..." id="recherche_input">
+        </div>
+        <a href="{% if user.is_authenticated %}{% url 'dashboard' %}{% else %}{% url 'login' %}{% endif %}" class="connexion">Profil</a>
+         <!-- Conteneur dédié avec lien cliquable -->
+          <a href="{% url 'panier' %}" class="shopping-bag">
+            <i class='bx bx-shopping-bag'></i>
+        </a>
+    </header>
+
 
 <div class="row py-5 px-4">
     <div class="col-md-8 mx-auto">
@@ -133,78 +202,157 @@
         <div class="bg-white shadow rounded overflow-hidden">
             <div class="px-4 pt-0 pb-4 cover">
                 <div class="media align-items-end profile-head">
-                    <div class="profile mr-3">
-                        <a href="#" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a>
-                    </div>
-                    <div class="media-body mb-5 text-white">
+                    <div class="profile mr-3 text-white d-flex align-items-center justify-content-between">
                         <h4 class="mt-0 mb-0">{{ user.username }}</h4>
-                        <p class="small mb-4">
-                            <i class="fas fa-map-marker-alt mr-2"></i>{{ user_profile.city }}
-                        </p>
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit"><i class='bx bxs-log-out'></i>Se déconnecter</button>
+                        </form>
+                    </div>
+                    <div class="media-body mb-5 text-white d-flex align-items-center justify-content-between ">
+                        <h4 class="mt-0 mb-0">{{ user.username }}</h4>
+                        
                     </div>
                 </div>
             </div>
-            <div class="bg-light p-4 d-flex justify-content-end text-center">
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">{{ user_profile.photos_count }}</h5>
-                        <small class="text-muted">
-                            <i class="fas fa-image mr-1"></i>Photos
-                        </small>
-                    </li>
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">{{ user_profile.followers_count }}</h5>
-                        <small class="text-muted">
-                            <i class="fas fa-user mr-1"></i>Followers
-                        </small>
-                    </li>
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">{{ user_profile.following_count }}</h5>
-                        <small class="text-muted">
-                            <i class="fas fa-user mr-1"></i>Following
-                        </small>
-                    </li>
-                </ul>
-            </div>
+            
+
+            
+
             <div class="px-4 py-3">
                 <h5 class="mb-0">À propos de vous</h5>
-                <div class="p-4 rounded shadow-sm bg-light">
-                    <p class="font-italic mb-0">Email: {{ user.email }}</p>
-                    <p class="font-italic mb-0">Age: 
+                <div id="user-info" class="p-4 rounded shadow-sm bg-light">
+                    <p class="font-italic mb-0 email">Email: {{ user.email }}</p>
+                    <p class="font-italic mb-0 age">Âge: 
                         {% if user_profile.age == 1 %}Under 18{% elif user_profile.age == 18 %}18-24{% elif user_profile.age == 25 %}25-34{% elif user_profile.age == 35 %}35-44{% elif user_profile.age == 45 %}45-49{% elif user_profile.age == 50 %}50-55{% elif user_profile.age == 56 %}56+{% endif %}
                     </p>
-                    <p class="font-italic mb-0">Profession: 
+                    <p class="font-italic mb-0 occupation">Profession: 
                         {% if user_profile.occupation == 0 %}Other or not specified{% elif user_profile.occupation == 1 %}Academic/Educator{% elif user_profile.occupation == 2 %}Artist{% elif user_profile.occupation == 3 %}Clerical/Admin{% elif user_profile.occupation == 4 %}College/Grad student{% elif user_profile.occupation == 5 %}Customer service{% elif user_profile.occupation == 6 %}Doctor/Healthcare{% elif user_profile.occupation == 7 %}Executive/Managerial{% elif user_profile.occupation == 8 %}Farmer{% elif user_profile.occupation == 9 %}Homemaker{% elif user_profile.occupation == 10 %}K-12 student{% elif user_profile.occupation == 11 %}Lawyer{% elif user_profile.occupation == 12 %}Programmer{% elif user_profile.occupation == 13 %}Retired{% elif user_profile.occupation == 14 %}Sales/Marketing{% elif user_profile.occupation == 15 %}Scientist{% elif user_profile.occupation == 16 %}Self-employed{% elif user_profile.occupation == 17 %}Technician/Engineer{% elif user_profile.occupation == 18 %}Tradesman/Craftsman{% elif user_profile.occupation == 19 %}Unemployed{% elif user_profile.occupation == 20 %}Writer{% endif %}
                     </p>
+                    
+            <a href="{% url 'update_profile' %}" class="btn btn-warning">
+                <i class='bx bx-edit-alt'></i> Modifier le profil
+              </a>
                 </div>
             </div>
 
+            
+    
             <!-- Wishlist -->
             <div class="py-4 px-4"> 
-                <div class="d-flex align-items-center justify-content-between mb-3"> 
-                    <h5 class="mb-0">Votre WishList</h5>
-                    <a href="#" class="btn btn-link text-muted">Tout afficher</a> 
-                </div> 
-                <div class="contenu-film">
-                    {% for wishlist_item in wishlist_items %}
-                        <div class="box">
-                            <div class="box-img">
-                                <a href="{% url 'movie_detail' wishlist_item.movie.id %}">
-                                    <img src="{{ wishlist_item.movie.poster_url }}" alt="{{ wishlist_item.movie.title }}">
-                                </a>
-                            </div>
-                            <p class="movie-title">{{ wishlist_item.movie.title }}</p>
+                    <h5 class="mb-0">Votre Wishlist</h5>
+                    <div class="card-body p-4 border rounded mb-5 shadow-sm">
+                        <div class="contenu-film">
+                            {% for wishlist_item in wishlist_items %}
+                                <div class="box">
+                                    <div class="box-img">
+                                        <a href="{% url 'movie_detail' wishlist_item.movie.id %}">
+                                            <img src="{{ wishlist_item.movie.poster_url }}" class="img-fluid rounded" alt="{{ wishlist_item.movie.title }}">
+                                            
+        
+                                        </a>
+                                    </div>
+                                    <p class="movie-title">{{ wishlist_item.movie.title }}</p>
+                                    <button onclick="removeFromWishlist({{ wishlist_item.movie.id }})">Retirer</button>
+                                </div>
+                            {% empty %}
+                                <p class="text-muted">Aucun film dans votre wishlist.</p>
+                            {% endfor %}
                         </div>
-                    {% empty %}
-                        <p class="text-muted">Aucun film dans votre wishlist.</p>
-                    {% endfor %}
-                </div>
+                </div> 
+                
             </div>
-
+            
+            
+            <div class="py-4 px-4">
+                <h5 class="mb-4">Votre historique de commandes</h5> <!-- mb-4 pour plus d'espace -->
+                {% for order_detail in order_history %}
+                    <div class="card-body p-4 border rounded mb-5 shadow-sm"> <!-- Ajout de mb-5 pour plus d'espace -->
+                        <p class="lead fw-normal mb-2" style="color: #a8729a;">
+                            Numero de commande : {{ order_detail.order.id }}
+                        </p>
+                        <p class="small text-muted mb-4">
+                            Numero de suivi : {{ order_detail.order.tracking_number }}
+                        </p>
+                        
+                        <!-- Ajout de gap et alignement amélioré -->
+                        <div class="card shadow-0 border mb-4 p-4"> 
+                            {% for item in order_detail.items %}
+                                <div class="row align-items-center gy-3 mb-3"> <!-- Ajout de mb-3 pour l'espacement -->
+                                    <div class="col-md-2">
+                                        <img src="{{ item.movie.poster_url }}" class="img-fluid rounded" alt="{{ item.movie.title }}">
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="text-muted mb-0" style="color: #a8729a;">{{ item.movie.title }}</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="text-muted mb-0 small">{{ item.price_per_item }}€</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="text-muted mb-0 small">Quantité: {{ item.quantity }}</p>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <p class="text-muted mb-0 small">Total: {{ item.total_price }}€</p>
+                                    </div>
+                                </div>
+                                <hr class="my-4"> <!-- Ajout de my-4 pour espacer les sections -->
+                            {% endfor %}
+                            
+                            <div class="d-flex justify-content-between pt-3">
+                                <p class="fw-bold mb-0">Détails de la commande</p>
+                                <p class="text-muted mb-0"><span class="fw-bold me-4">Sous-Total</span> $898.00</p>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <p class="text-muted mb-0">Date de la commande : {{ order_detail.order_date }}</p>
+                                <p class="text-muted mb-0"><span class="fw-bold me-4">Livraison</span>Gratuite</p>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p class="text-muted">Aucune commande trouvée.</p>
+                {% endfor %}
+            </div>
+            
+                
+            
         </div>
     </div>
 </div>
 
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+ function removeFromWishlist(movieId) {
+    if (!movieId) {
+        console.error("L'ID du film est manquant !");
+        return;
+    }
+    fetch(`/wishlist/remove/${movieId}/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+        location.reload();  // Rafraîchit la page après suppression
+    })
+    .catch(error => console.error('Erreur:', error));
+}
+
+window.onload = function() {
+    const successMessage = document.getElementById('successMessage');
+    if (successMessage) {
+      setTimeout(function() {
+        successMessage.style.display = 'none';
+      }, 5000);  // Le message disparait après 5 secondes (5000 ms)
+    }
+  };
+    
+
+   
+ </script>
 </body>
 </html>

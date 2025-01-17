@@ -55,19 +55,36 @@ user_profiles[['age']] = scaler.fit_transform(user_profiles[['age']])
 # Fusionner les profils utilisateurs avec les ratings (moyenne des ratings pour chaque utilisateur)
 ratings_with_profiles = ratings.merge(user_profiles, on='user_id', how='left')
 
-# Créer la matrice utilisateur-film (matrice de ratings)
-user_movie_matrix = ratings_with_profiles.pivot_table(index='user_id', columns='movie_id', values='rating', fill_value=0)
+# Créer la liste complète des utilisateurs et des films
+all_user_ids = user_profiles['user_id'].unique()  # Tous les utilisateurs
+all_movie_ids = ratings['movie_id'].unique()  # Tous les films notés
 
-# Supprimer la colonne 'user_id' et ajouter des informations supplémentaires sur les utilisateurs (occupation et age)
-user_profiles = user_profiles.set_index('user_id')
+# Créer une matrice utilisateur-film complète avec toutes les combinaisons
+full_user_movie_matrix = pd.DataFrame(index=all_user_ids, columns=all_movie_ids).fillna(0)
 
-# Joindre la matrice utilisateur-film avec les métadonnées utilisateur (occupation et age)
-user_metadata = user_profiles[['age'] + [col for col in user_profiles.columns if col.startswith('occupation_')]]
+# Remplir la matrice avec les notes existantes
+for _, row in ratings.iterrows():
+    full_user_movie_matrix.at[row['user_id'], row['movie_id']] = row['rating']
+
+# Joindre les métadonnées utilisateur (âge et occupation encodée)
+full_user_movie_matrix = full_user_movie_matrix.join(user_profiles.set_index('user_id'))
+
+# Standardisation des données (âge et occupation uniquement, pas les notes de films)
+user_metadata_columns = ['age'] + [col for col in user_profiles.columns if col.startswith('occupation_')]
+
+# Standardisation de ces colonnes uniquement
+full_user_movie_matrix[user_metadata_columns] = scaler.fit_transform(full_user_movie_matrix[user_metadata_columns])
+
+# Sauvegarder la matrice mise à jour
+full_user_movie_matrix.to_csv('user_movie_matrix_with_standardized_metadata.csv')
 
 # Joindre les colonnes d'occupation et d'âge à la matrice des films
-user_movie_matrix = user_movie_matrix.join(user_metadata)
+user_metadata = user_profiles[['age'] + [col for col in user_profiles.columns if col.startswith('occupation_')]]
 
-# Standardiser la matrice complète avec les informations utilisateur (age et occupation)
+# Joindre les métadonnées utilisateur aux notes de films
+user_movie_matrix = full_user_movie_matrix.copy()
+
+# Standardiser la matrice complète avec les informations utilisateur (âge et occupation)
 user_movie_matrix_standardized = user_movie_matrix.apply(
     lambda x: scaler.fit_transform(x.values.reshape(-1, 1)).flatten() 
     if x.name in user_metadata.columns else x
@@ -83,16 +100,12 @@ user_similarity = cosine_similarity(user_movie_matrix_standardized)
 user_similarity_df = pd.DataFrame(user_similarity, index=user_movie_matrix.index, columns=user_movie_matrix.index)
 user_similarity_df.to_csv('user_similarity_matrix.csv')
 
-# Afficher un aperçu des résultats
-# Afficher les 20 premières lignes
-#print(user_similarity_df.head(20))
-# Sauvegarder la matrice dans un fichier CSV
-# Accéder à la colonne 'age' dans la matrice user_movie_matrix
-
-print(user_profiles.columns)  # Vérifier si 'age' est bien présent
-print(user_profiles.tail())
-# Afficher les 5 premières valeurs de la colonne 'age'
-
-
+# Sauvegarder la matrice de similarité complète
 user_similarity_df.to_csv('user_similarity_matrix_full.csv')
 
+# Afficher un aperçu des résultats
+print(user_profiles.columns)  # Vérifier si 'age' est bien présent
+print(user_profiles.tail())  # Afficher les 5 dernières lignes
+
+# Optionnel : afficher les premières valeurs de la similarité
+#print(user_similarity_df.head(20))

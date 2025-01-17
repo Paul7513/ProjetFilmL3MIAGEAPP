@@ -377,7 +377,7 @@ header {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s; /* Animation au survol */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin-left: 3%;
+    margin-left: 6%;
 }
 
 
@@ -419,12 +419,7 @@ header {
     transform: scale(1.2); /* Grossit l'icône quand on survole */
 }
 
-#inputQuantity {
-    max-width: 3rem;
-    text-align: center;
-    padding-left: -3%;
-    padding-right: -3%;
-}
+
 
 section{
     position: relative;
@@ -439,12 +434,14 @@ section .cards{
    position: relative;
    width: 100%;
    height: 200px;
-  margin-left: 75px;
+   margin-left: 75px;
    margin-top: 10px;
    display: flex;
    align-items: center;
    overflow-x: auto;
    scroll-behavior: smooth;
+   margin-right: 805px;
+ 
 }
 
 section .cards::-webkit-scrollbar{
@@ -468,6 +465,10 @@ section .cards .card{
     height: 100%;
     min-width: 30px;
     border-radius: 8px; 
+ }
+
+ .btn btn-primary{
+    background: none;
  }
 
  
@@ -513,3 +514,67 @@ section h2{
     background-color: rgba(0, 0, 0, 0.1);
 
 }
+
+
+.btn-bande-annonce {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: 'Jost', sans-serif; /* Forcer l'utilisation de la police principale */
+    background: none;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 5rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 4%;
+    gap: 10px;
+}
+
+.btn-bande-annonce i {
+    font-family: 'Jost', sans-serif; /* Uniformiser la police de l'icône */
+    font-style: normal; /* Désactiver l'italique par défaut des balises <i> */
+}
+
+
+
+/* Style de la modal */
+.modal {
+    display: none; /* Cachée par défaut */
+    position: fixed;
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #000;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.close {
+    color: #fff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.btn-primary{
+   background: none;
+} 

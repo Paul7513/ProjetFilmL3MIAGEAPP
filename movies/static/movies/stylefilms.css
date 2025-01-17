@@ -152,156 +152,11 @@ header{
     color: #aaa; /* Couleur du placeholder */
 }
 
-/* Swiper Section */
-.home-swiper{
-    
-        width: 100%;
-        height: 100vh; /* La section prend toute la hauteur de la fenêtre */
-        position: relative; /* Pour positionner les éléments à l'intérieur */
-        display: flex;
-        align-items: center; /* Centrer le contenu de la section */
-        justify-content: center;
-        padding-bottom: 0rem;
-    
-}
-
-.swiper-wrapper{
-    width: 100%;
-    height: 100%;
-}
-.swiper-slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #121112;
-    position: relative;
-    overflow: hidden;
-}
 
 
-.contenu {
-    position: relative; /* Pour permettre à l'iframe de se positionner */
-    width: 50%; /* La largeur prend toute la fenêtre */
-    height: 100%; /* La hauteur prend toute la fenêtre */
-    overflow: hidden; /* Cache les débordements */
-    z-index: -1; /* Place la vidéo en arrière-plan */
-}
 
 
-/*.contenu iframe */
-.video-1{
-    position: absolute;
-    width: 555%;
-    height: 160vh;
-    top: -50vh; /* Déplace la vidéo de 20% de la hauteur de la fenêtre */
-    left: -423vh;
-    right: -415vh;
-    bottom: -10vh;
-    object-fit: cover;
-    z-index: -1;
-}
 
-.video-2 {
-    position: absolute;
-    width: 519%;
-    height: 120vh;
-    top: -19vh; /* Déplace la vidéo de 20% de la hauteur de la fenêtre */
-    left: -400vh;
-    right: -435vh;
-    bottom: -10vh;
-    object-fit: cover;
-    z-index: -1;
-}
-
-.video-3 {
-    position: absolute;
-    width: 521%;
-    height: 126vh;
-    top: -19vh; /* Déplace la vidéo de 20% de la hauteur de la fenêtre */
-    left: -400vh;
-    right: -435vh;
-    bottom: -14vh;
-    object-fit: cover;
-    z-index: -1;
-}
-
-.video-4 {
-    position: absolute;
-    width: 519%;
-    height: 124vh;
-    top: -17vh; /* Déplace la vidéo de 20% de la hauteur de la fenêtre */
-    left: -390vh;
-    right: -435vh;
-    bottom: -14vh;
-    object-fit: cover;
-    z-index: -1;
-}
-
-.home-text {
-    position: absolute; /* Pour positionner la description relativement à l'iframe */
-    top: 15%; /* Décale la description vers le bas (ajustez selon votre besoin) */
-    left: 5%; /* Vous pouvez ajuster la position horizontale */
-    color: #fff; /* Couleur du texte */
- 
-}
-
-
-.home-text h1 {
-    display: flex;
-    position: relative;
-    font-size: 50px;
-    margin-bottom: 10px;
-}
-
-.home-text p {
-    position: relative;
-    display: flex;
-    align-items: center;
-    font-size: 25px;
-    line-height: 1.5;
-}
-
-.details {
-    display: flex;
-    align-items: center; /* Centrer verticalement les éléments */
-    
-    font-size: 14px;
-    color: #ccc;
-}
-
-.details .genre,
-.details .year {
-    margin: 0;
-}
-
-.vertical-bar {
-    height: 20px; /* Hauteur de la barre */
-    width: 2px; /* Largeur de la barre */
-    background-color: #ccc; /* Couleur de la barre */
-    margin: 0 10px; /* Espacement de part et d'autre de la barre */
-}
-
-.b{
-   
-        margin-top: 20px;
-        display: flex;
-        align-items: center; /* Aligne verticalement les icônes */
-        justify-content: flex-start; /* Aligne tout à gauche */
-        gap: 10px; /* Espace entre les icônes */
-    
-}
-.b a{
-    padding: 8px 12px;
-    font-size: 15px;
-    font-weight: 600;
-    background:   rgba(0, 0, 0, 0.2);
-    color: #fff;
-    border-radius: 5px;
-    text-align: center;
-    display: inline-flex; /* S'assure que les icônes et le style sont bien visibles */
-    align-items: center;
-    justify-content: center;
-}
 
 #filmpop{
     color: #611515;
@@ -330,6 +185,11 @@ header{
     margin-top: 5rem;
 }
 
+
+
+.filmpop{
+    margin-top: 5%;
+}
 
 
 .box .box-img{
@@ -387,14 +247,6 @@ bx bx-shopping-bag {
 }
 
 
-.col-md-2 {
-    margin-bottom: 20px; /* Ajoute un espacement sous chaque article */
-    padding: 10px; /* Ajoute de l'espace autour de chaque article */
-}
-
-#exampleFormControlSelect1{
-    width: 90%;
-}
 
 
 

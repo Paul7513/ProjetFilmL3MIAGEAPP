@@ -57,3 +57,28 @@ class UserRegistrationForm(forms.ModelForm):
             raise forms.ValidationError("Passwords do not match")
 
         return cleaned_data
+
+
+
+class UserProfileForm(forms.ModelForm):
+    GENDER_CHOICES = [('M', 'Male'), ('F', 'Female')]
+    AGE_GROUP_CHOICES = [
+        (1, "Under 18"), (18, "18-24"), (25, "25-34"), (35, "35-44"),
+        (45, "45-49"), (50, "50-55"), (56, "56+")
+    ]
+    OCCUPATION_CHOICES = [
+        (0, "Other or not specified"), (1, "Academic/Educator"), (2, "Artist"),
+        (3, "Clerical/Admin"), (4, "College/Grad student"), (5, "Customer service"),
+        (6, "Doctor/Healthcare"), (7, "Executive/Managerial"), (8, "Farmer"),
+        (9, "Homemaker"), (10, "K-12 student"), (11, "Lawyer"), (12, "Programmer"),
+        (13, "Retired"), (14, "Sales/Marketing"), (15, "Scientist"), (16, "Self-employed"),
+        (17, "Technician/Engineer"), (18, "Tradesman/Craftsman"), (19, "Unemployed"), (20, "Writer")
+    ]
+
+    gender = forms.ChoiceField(choices=GENDER_CHOICES, label="Gender")
+    age = forms.ChoiceField(choices=AGE_GROUP_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}), label="Age Group")
+    occupation = forms.ChoiceField(choices=OCCUPATION_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}), label="Occupation")
+
+    class Meta:
+        model = UserProfile
+        fields = ['gender', 'age', 'occupation']
