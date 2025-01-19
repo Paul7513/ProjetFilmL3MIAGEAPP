@@ -107,19 +107,14 @@
             <i class='bx bxs-movie'></i>Movies
         </a>
         <ul class="navbar">
-            <li><a href="#" class="acceuil-active">Accueil</a></li>
+            <li><a href="{% url 'index' %}" class="acceuil-active">Accueil</a></li>
             <li><a href="{% url 'films' %}">Films</a></li>
             <li><a href="{% if user.is_authenticated %}{% url 'suggestion' %}{% else %}{% url 'login' %}{% endif %}">Pour-vous</a></li>
-            <li><a href="#">Newsletter</a></li>
-            <li><a href="#">Services</a></li>
+            <li><a href="{% url 'newsletter' %}">Newsletter</a></li>
         </ul>
-        <div class="recherche">
-            <i class='bx bx-search-alt-2'></i>
-            <input type="text" placeholder="Rechercher..." id="recherche_input">
-        </div>
         <a href="{% if user.is_authenticated %}{% url 'dashboard' %}{% else %}{% url 'login' %}{% endif %}" class="connexion">Profil</a>
          <!-- Conteneur dédié avec lien cliquable -->
-          <a href="{% url 'panier' %}" class="shopping-bag">
+          <a href="{% url 'panier' %}" class="shopping-bag" style="color: #fff; ">
             <i class='bx bx-shopping-bag'></i>
         </a>
     </header>
@@ -301,7 +296,7 @@
             <div class="film-details">
                <!-- Ajout du lien autour du titre -->
               <a href="{% url 'movie_detail' movie_id=film.id %}">
-                  <h3>{{ film.title }} ({{ film.year }})</h3>
+                  <h3 style="color: #fff;">{{ film.title }}</h3>
               </a>
                 <span class="genre">{{ film.genre }}</span>
                 <p class="average-rating">Note Moyenne : {{ film.average_rating|floatformat:1 }}/5</p>

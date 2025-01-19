@@ -539,7 +539,9 @@ section h2{
     font-style: normal; /* Désactiver l'italique par défaut des balises <i> */
 }
 
-
+a {
+    text-decoration: none; /* Désactive le soulignement par défaut */
+}
 
 /* Style de la modal */
 .modal {

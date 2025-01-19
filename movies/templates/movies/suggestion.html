@@ -111,15 +111,10 @@
             <li><a href="{% url 'index' %}" >Accueil</a></li>
             <li><a href="{% url 'films' %}">Films</a></li>
             <li><a href="{% if user.is_authenticated %}{% url 'suggestion' %}{% else %}{% url 'login' %}{% endif %}" class="acceuil-active">Pour-vous</a></li>
-            <li><a href="#">Newsletter</a></li>
-            <li><a href="#">Services</a></li>
-        </ul>
-        <!-- Formulaire combiné pour recherche et filtres -->
-        <form action="{% url 'films' %}" method="GET" class="recherche">
-            <input type="text" placeholder="Rechercher un film..." name="q" id="recherche_input" value="{{ request.GET.q }}">
+            <li><a href="{% url 'newsletter' %}">Newsletter</a></li>
             
-            <button type="submit"><i class='bx bx-search-alt-2'></i></button>
-        </form>
+        </ul>
+      
         <a href="{% if user.is_authenticated %}{% url 'dashboard' %}{% else %}{% url 'login' %}{% endif %}" class="connexion">Profil</a>
          <!-- Conteneur dédié avec lien cliquable -->
           <a href="{% url 'panier' %}" class="shopping-bag">
@@ -135,43 +130,18 @@
 
   <section class="filmpop" id="filmpop">
 
-    <div id="id" align-items-center justify-content-between mb-3>
-        <h2 class="heading">Tous les films</h2>
-        <button type="button" onclick="toggleFilter()" class="filter-button">
-            <i class='bx bx-filter' style='color:#ffffff'></i> Filtrer
-        </button>
-    </div>
+
     
     <!-- Formulaire du filtre des genres -->
     <!-- Formulaire de filtrage avec cases à cocher -->
 <!-- Formulaire de filtrage avec cases à cocher -->
 <!-- Filtres des genres -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 p-4 bg-light">
-                <form action="{% url 'films' %}" method="GET">
-                    <!-- Champ caché pour conserver le terme de recherche -->
-                    <input type="hidden" name="q" value="{{ request.GET.q }}">
 
-                    <h5>Filtrer par Genre</h5>
-                        <div id="filterBox" style="display:none;">{% for genre in genres %}
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" name="genre" value="{{ genre }}"
-                                {% if genre in selected_genres %}checked{% endif %}>
-                                <label class="form-check-label">{{ genre }}</label>
-                            </div>
-                        {% endfor %}
-                        <button type="submit" class="btn btn-primary mt-3">Appliquer les filtres</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
     {% if user.is_authenticated %}
-    <h2>Films recommandés pour vous, {{ user.username }} :</h2>
+    <h2 style="color: #fff; margin-left: 298px;">Films recommandés pour vous, {{ user.username }} :</h2 >
 {% else %}
-    <h2>Films populaires :</h2>
+    <h2 style="color: #fff; margin-left: 298px;">Films populaires :</h2>
 {% endif %}
 
 {% if no_results %}
@@ -194,7 +164,7 @@
         </div>
         <div class="film-details">
             <a href="{% url 'movie_detail' movie_id=film.id %}">
-                <h3>{{ film.title }} ({{ film.year }})</h3>
+                <h3 style="color: #fff;">{{ film.title }} ({{ film.year }})</h3>
             </a>
             <span class="genre">{{ film.genre }}</span>
             <p class="average-rating">Note Moyenne : {{ film.average_rating|floatformat:1 }}/5</p>

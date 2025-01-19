@@ -12,7 +12,7 @@
 }
 
 :root{
-    --main-color: #c0a483;
+    --main-color: #ffffff;
     --text-color: #0a0a0a;
     --bg-color:#fff;
 }
@@ -43,7 +43,9 @@ header{
 }
 
 
-
+a {
+    text-decoration: none; /* Désactive le soulignement par défaut */
+}
 
 
 .logo{
@@ -79,6 +81,7 @@ header{
     color: rgb(243, 246, 246);
     padding: 5px 10px;
     transition: color 0.4s ease;
+    text-decoration: none; /* Désactive le soulignement par défaut */
 }
 
 .navbar a:hover {
@@ -173,13 +176,13 @@ h5{
 }
 
 .card-body {
-    background-color: #000000; /* Couleur de fond gris clair */
-    color: #fff;
+    background-color: #f3f3f3; /* Couleur de fond gris clair */
+    color: #000000;
 
 }
 
 .card{
-    background-color: #000000;
+    background-color: #e7e7e7;
 }
 
 

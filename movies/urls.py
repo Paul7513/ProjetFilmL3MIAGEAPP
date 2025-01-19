@@ -51,6 +51,6 @@ urlpatterns = [
     path('films/', views.films, name='films'),
     path('suggestion/', views.suggestion, name='suggestion'),
      path('article/<int:movie_id>/submit_rating/', views.submit_rating, name='submit_rating'),  # Ajoutez cette ligne
-     
+    path('newsletter/', views.subscribe_to_newsletter, name='newsletter'),
 
 ]

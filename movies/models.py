@@ -139,3 +139,11 @@ class UserSimilarityMatrix(models.Model):
 
     class Meta:
         unique_together = ('user1', 'user2')
+
+class NewsletterSubscription(models.Model):
+    email = models.EmailField(unique=True)
+    user = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
+    subscribed_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email

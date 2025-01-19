@@ -1,16 +1,47 @@
-<!-- home.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
+    <style>
+        /* Applique un style global à la page */
+        body {
+            background-color: black; /* Fond noir */
+            color: white; /* Texte blanc */
+            height: 100vh; /* Hauteur de la page à 100% de la fenêtre */
+            display: flex; /* Utilisation de Flexbox pour centrer le contenu */
+            flex-direction: column; /* Organiser les éléments en colonne */
+            justify-content: center; /* Centrer horizontalement */
+            align-items: center; /* Centrer verticalement */
+            margin: 0; /* Supprimer les marges par défaut */
+            font-family: Arial, sans-serif; /* Choisir une police agréable */
+        }
+
+        h1 {
+            font-size: 4rem; /* Taille du texte en grand */
+            text-align: center; /* Centrer le texte dans l'élément */
+            margin-bottom: 20px; /* Ajouter un espace sous le titre */
+        }
+
+        p {
+            font-size: 1.5rem; /* Taille du texte du lien */
+            text-align: center;
+        }
+
+        a {
+            color: white; /* Lien en blanc */
+            text-decoration: none; /* Supprimer le soulignement du lien */
+            font-size: 1.5rem; /* Agrandir la taille du texte du lien */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Souligner le lien au survol */
+        }
+    </style>
 </head>
 <body>
-    <h1>Bienvenue sur la page d'accueil !</h1>
-    
-    <p>Bienvenue sur notre site. Vous pouvez vous connecter ou vous inscrire pour commencer.</p>
-
-    <p><a href="{% url 'login' %}">Se connecter</a> | <a href="{% url 'register' %}">S'inscrire</a>|<a href="{% url 'index' %}">Accueil</a></p>
+    <h1>Bienvenue !</h1>
+    <p><a href="{% url 'index' %}">Cliquez pour commencer</a></p>
 </body>
 </html>

@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Checkout example · Bootstrap</title>
+    <title>Checkout</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,10 +18,37 @@
 
     <style>
 
-       .bg-light{
-        color: black;
-       }
+footer {
+        width: 100%; /* Cela étend le footer sur toute la largeur de l'écran */
+        padding: 20px 0; /* Espacement au-dessus et au-dessous du contenu du footer */
+        background-color: #333; /* Choisir une couleur de fond sombre, à adapter */
+        color: white; /* Assurez-vous que le texte est visible sur un fond sombre */
+    }
 
+    footer ul {
+        padding-left: 0;
+        list-style: none;
+        text-align: center; /* Centrer les éléments du footer */
+    }
+
+    footer ul li {
+        display: inline; /* Mettre les éléments de liste sur la même ligne */
+        margin-right: 10px; /* Espacement entre les éléments */
+    }
+
+    footer ul li a {
+        color: white; /* Lien de couleur blanche */
+        text-decoration: none; /* Enlever le soulignement */
+    }
+
+    footer ul li a:hover {
+        text-decoration: underline; /* Souligner le lien au survol */
+    }
+
+        .bg-light{
+            background-color: black;
+            color: white; /* Le texte devient blanc pour contraster avec le fond noir */
+          }
         .row {
             background-color: white;
             color: black; /* Pour conserver le texte en noir dans les .row */
@@ -47,38 +74,30 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{% static 'movies/checkout.css' %}">
   </head>
-  <body class="bg-light">
+  <body class="bg-light" style="background-color: black;">
     <div class="container">
   
   <div class="row mb-4">
     <div class="col-md-4 order-md-2 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted">Votre panier</span>
-        <span class="badge badge-secondary badge-pill">3</span>
       </h4>
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <h4 class="mb-3">Votre Panier</h4>
-          <ul class="list-group mb-3">
-              {% for item in cart_items %}
-              <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                      <h6 class="my-0">{{ item.movie.title }}</h6>
-                      <small class="text-muted">Quantité: {{ item.quantity }}</small>
-                  </div>
-                  <span class="text-muted">{{ item.total_price }} €</span>
-              </li>
-              {% endfor %}
-              <li class="list-group-item d-flex justify-content-between">
-                  <span>Total (EUR)</span>
-                  <strong>{{ total_amount }} €</strong>
-              </li>
-          </ul>
-        
-        <li class="list-group-item d-flex justify-content-between">
-          <span>Total (USD)</span>
-          <strong>$20</strong>
-        </li>
+          
+            {% for item in cart_items %}
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                    <h6 class="my-0" style="color: rgb(0, 0, 0);">{{ item.movie.title }}</h6>
+                    <small class="text-muted">Quantité: {{ item.quantity }}</small>
+                </div>
+                <span class="text-muted">{{ item.total_price }} €</span>
+            </li>
+            {% endfor %}
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Total (EUR)</span>
+                <strong>{{ total_amount }} €</strong>
+            </li>
       </ul>
 
      
@@ -189,14 +208,30 @@
   </div>
   {% endif %}
 
-  <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2017-2019 Company Name</p>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
-    </ul>
-  </footer>
+  <!-- Remove the container if you want to extend the Footer to full width. -->
+
+
+  <footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <p>Contactez-nous via : filmsPM@log.com</p>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">FilmsMP.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+  
+
+<!-- End of .container -->
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

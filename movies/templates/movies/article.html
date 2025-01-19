@@ -13,6 +13,11 @@
 
 
     <title>{{ movie.title }}</title>
+    <style>
+        a{
+            text-decoration: none; /* Désactive le soulignement par défaut */
+        }
+    </style>
 </head>
 
 <body>
@@ -23,15 +28,12 @@
             <i class='bx bxs-movie'></i>Movies
         </a>
         <ul class="navbar">
-            <li><a href="#" class="acceuil-active">Accueil</a></li>
-            <li><a href="{% url 'films' %}">Films</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Newsletter</a></li>
+            <a href="{% url 'index' %}" >Accueil</a>
+            <a href="{% url 'films' %}">Films</a>
+            <a href="{% if user.is_authenticated %}{% url 'suggestion' %}{% else %}{% url 'login' %}{% endif %}">Pours-vous</a>
+            <a href="{% url 'newsletter' %}">Newsletter</a>
         </ul>
-        <div class="recherche">
-            <i class='bx bx-search-alt-2'></i>
-            <input type="text" placeholder="Rechercher..." id="recherche_input">
-        </div>
+        
         <a href="{% if user.is_authenticated %}{% url 'dashboard' %}{% else %}{% url 'login' %}{% endif %}" class="connexion">Profil</a>
          <!-- Conteneur dédié avec lien cliquable -->
           <a href="{% url 'panier' %}" class="shopping-bag">
@@ -200,7 +202,28 @@
     <p>Aucun film similaire disponible.</p>
 {% endif %}
 
-    
+
+    <section>
+    <footer class=" text-white" style="color: aliceblue; background-color: rgb(0,0,0,0.5); height: 150px; margin-top: 50px;">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+       <p>Contactez-nous via : filmsPM@log.com</p>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2025 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/">filmsPM.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+</section>  
+
 <script>
 
     function addToWishlist(movieId) {

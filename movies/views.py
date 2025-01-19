@@ -24,6 +24,9 @@ import ast
 import uuid
 import time
 from django.urls import reverse
+from .models import NewsletterSubscription
+from django.conf import settings
+
 
 # Charger les matrices nécessaires pour la recommandation
 user_movie_matrix = pd.read_csv('user_movie_matrix_with_standardized_metadata.csv', index_col=0)
@@ -69,9 +72,11 @@ def dashboard(request):
     order_details = []
     for order in order_history:
         order_items = OrderItem.objects.filter(order=order)  # Récupère les articles de la commande
+        subtotal = sum(item.total_price for item in order_items)  # Calcul du sous-total
         order_details.append({
             'order': order,
-            'items': order_items
+            'items': order_items,
+            'subtotal': subtotal  # Ajout du sous-total à chaque commande
         })
     # Vous pouvez également ajouter d'autres informations, par exemple, les films de la wishlist ou les notes de films
     return render(request, 'movies/dashboard.html', {
@@ -253,7 +258,7 @@ def panier(request):
     else:
         # Utilisateur non connecté : récupérer les éléments depuis la session
         cart_items = []
-        cart_data = request.session.get('cart', {})
+        cart_data = request.session.get('cart_items', {})
         for movie_id, item in cart_data.items():
             movie = Movie.objects.get(id=movie_id)
             cart_items.append({
@@ -594,3 +599,40 @@ def movie_recommendations_view(request):
     }
     
     return render(request, 'movies/recommendations.html', context)
+
+def subscribe_to_newsletter(request):
+    if request.method == 'POST':
+        # Récupérer les données JSON envoyées par le client
+        data = json.loads(request.body)
+        email = data.get('email')
+        
+        print(f"Email reçu : {email}")  # Ajout du print pour déboguer
+        
+        if not email:
+            return JsonResponse({"status": "error", "message": "L'adresse email est requise."})
+        
+        # Vérifier si l'email existe déjà
+        if NewsletterSubscription.objects.filter(email=email).exists():
+            return JsonResponse({"status": "error", "message": "Cet email est déjà abonné."})
+        
+        # Créer un nouvel abonné
+        subscription = NewsletterSubscription(email=email)
+        subscription.save()
+
+         # Envoi de l'email de confirmation
+        subject = 'Merci de vous être abonné à notre newsletter'
+        message = (
+            "Bonjour,\n\n"
+            "Merci de vous être inscrit à notre newsletter ! Vous recevrez bientôt nos dernières actualités, mises à jour et offres exclusives.\n\n"
+            "Cordialement,\n"
+            "L'équipe de la newsletter"
+        )
+        from_email = settings.EMAIL_HOST_USER
+        
+        send_mail(subject, message, from_email, [email], fail_silently=False)
+        
+        return JsonResponse({"status": "success", "message": "Merci de vous être abonné à notre newsletter"})
+    
+    # Récupérer l'email de l'utilisateur connecté si disponible
+    user_email = request.user.email if request.user.is_authenticated else None
+    return render(request, 'movies/newsletter.html', {'user_email': user_email})

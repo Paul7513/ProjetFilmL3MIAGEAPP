@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_bootstrap5',  # Ajoutez cette ligne pour utiliser Bootstrap 5
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -153,6 +155,9 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'mandadabo590@gmail.com'
 EMAIL_HOST_PASSWORD = 'wqprvfnhaceg ebvx'
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"  # Autorisez Bootstrap 5
 
 

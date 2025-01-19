@@ -130,15 +130,19 @@ header{
 .recherche {
     display: flex; /* Utilise flexbox pour aligner horizontalement */
     align-items: center; /* Centre verticalement l'icône et le champ */
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 5px;
     padding: 5px;
+    background: none;
+    
 }
 
 .recherche i {
     font-size: 16px; /* Taille de l'icône */
-    color: #888; /* Couleur de l'icône */
+    color: #ffffff; /* Couleur de l'icône */
     margin-right: 8px; /* Espace entre l'icône et le champ */
+    background: transparent;
+    margin-top: 20px;
 }
 
 .recherche input {
@@ -146,6 +150,10 @@ header{
     border: none;
     outline: none;
     font-size: 14px;
+    background: #2d2c2c50;
+    color: #fff;
+    margin-top: 10px;
+    padding: 5px 5px 5px 5px;
 }
 
 .recherche input::placeholder {

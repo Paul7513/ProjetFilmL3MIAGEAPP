@@ -8,17 +8,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         body {
-            color: #000;
+            color: #fffdfd;
             overflow-x: hidden;
             height: 100%;
             background: #d299c2;
-            background: -webkit-linear-gradient(to right, rgba(210,153,194,0.5), rgba(254,249,215,0.5));
-            background: linear-gradient(to right, rgba(210,153,194,0.5), rgba(254,249,215,0.5));
+            background: black;
+            background: black;
         }
 
         .container {
             padding: 4rem;
             max-width: 1000px;
+            
+            color: #ffffff;
         }
 
         .card0 {
@@ -32,7 +34,7 @@
         }
 
         .card2 {
-            background-image: linear-gradient(to right, rgba(210,153,194,0.5), rgba(254,249,215,0.5));
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.5));
         }
 
         #logo {
@@ -43,7 +45,7 @@
         .btn-color {
             border-radius: 50px;
             color: #fff;
-            background-image: linear-gradient(to right, rgba(210,153,194,0.5), rgba(254,249,215,0.5));
+            background-image: linear-gradient(to right, #000, #fff);
             padding: 15px;
             border: none;
         }
@@ -81,13 +83,11 @@
     <div class="container px-4 py-5 mx-auto">
         <div class="card card0">
             <div class="d-flex flex-lg-row flex-column-reverse">
-                <div class="card card1">
-                    <div class="row justify-content-center my-auto">
-                        <div class="col-md-8 col-10 my-5">
-                            <div class="row justify-content-center px-3 mb-3">
-                                <img id="logo" src="https://i.imgur.com/PSXxjNY.png">
-                            </div>
-                            <h3 class="mb-5 text-center heading">Nous sommes Manda et Pul</h3>
+                <div class="card card1" style="background: #000;">
+                    <div class="row justify-content-center my-auto" style="background: #000;">
+                        <div class="col-md-8 col-10 my-5" style="color: rgb(255, 255, 255); background: #000;">
+                           
+                            <h3 class="mb-5 text-center heading">Nous sommes Manda et Paul</h3>
 
                             <h6 class="msg-info">Connectez-vous</h6>
 
@@ -99,13 +99,11 @@
                                 </div>
                             </form>
 
-                            <div class="row justify-content-center my-2">
-                                <a href="#"><small class="text-muted">Mop de passe oublié ?</small></a>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="bottom text-center mb-5">
-                        <p class="sm-text mx-auto mb-3">Pas de compte ? 
+                        <p class="sm-text mx-auto mb-3" style="color: #fff;">Pas de compte ? 
                             <a href="{% url 'register' %}">
                                 <button class="btn btn-white ml-2">Créez en un</button>
                             </a></p>
@@ -114,11 +112,30 @@
                 <div class="card card2">
                     <div class="my-auto mx-md-5 px-md-5 right">
                         <h3 class="text-white">Bienvenu sur notre site d'achat de films.</h3>
-                        <small class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</small>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <footer class=" text-white" style="color: aliceblue; background-color: rgb(67, 65, 65);">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+           <p>Contactez-nous via : filmsPM@log.com</p>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2025 Copyright:
+          <a class="text-white" href="https://mdbootstrap.com/">filmsPM.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
 </body>
 </html>

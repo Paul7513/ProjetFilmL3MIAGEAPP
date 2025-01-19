@@ -111,18 +111,13 @@
             <li><a href="{% url 'index' %}" >Accueil</a></li>
             <li><a href="{% url 'films' %}" class="acceuil-active">Films</a></li>
             <li><a href="{% if user.is_authenticated %}{% url 'suggestion' %}{% else %}{% url 'login' %}{% endif %}">Pour-vous</a></li>
-            <li><a href="#">Newsletter</a></li>
-            <li><a href="#">Services</a></li>
-        </ul>
-        <!-- Formulaire combiné pour recherche et filtres -->
-        <form action="{% url 'films' %}" method="GET" class="recherche">
-            <input type="text" placeholder="Rechercher un film..." name="q" id="recherche_input" value="{{ request.GET.q }}">
+            <li><a href="{% url 'newsletter' %}">Newsletter</a></li>
             
-            <button type="submit"><i class='bx bx-search-alt-2'></i></button>
-        </form>
+        </ul>
+     
         <a href="{% if user.is_authenticated %}{% url 'dashboard' %}{% else %}{% url 'login' %}{% endif %}" class="connexion">Profil</a>
          <!-- Conteneur dédié avec lien cliquable -->
-          <a href="{% url 'panier' %}" class="shopping-bag">
+          <a href="{% url 'panier' %}" class="shopping-bag" >
             <i class='bx bx-shopping-bag'></i>
         </a>
     </header>
@@ -137,7 +132,13 @@
 
     <div id="id" align-items-center justify-content-between mb-3>
         <h2 class="heading">Tous les films</h2>
-        <button type="button" onclick="toggleFilter()" class="filter-button">
+          <!-- Formulaire combiné pour recherche et filtres -->
+          <form action="{% url 'films' %}" method="GET" class="recherche" style="width: 20px; background: none;">
+            <input type="text" placeholder="Rechercher un film..." name="q" id="recherche_input" value="{{ request.GET.q }}" style="border-radius: 5%;">
+            
+            <button type="submit" style="background:none; border: none;"><i class='bx bx-search-alt-2'></i></button>
+        </form>
+        <button type="button" onclick="toggleFilter()" class="filter-button" style="margin-top: 30px; margin-left: 4px; color: #fff; background: none;">
             <i class='bx bx-filter' style='color:#ffffff'></i> Filtrer
         </button>
     </div>
@@ -157,10 +158,10 @@
                             <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" name="genre" value="{{ genre }}"
                                 {% if genre in selected_genres %}checked{% endif %}>
-                                <label class="form-check-label">{{ genre }}</label>
+                                <label class="form-check-label" style="color: #fff;">{{ genre }}</label>
                             </div>
                         {% endfor %}
-                        <button type="submit" class="btn btn-primary mt-3">Appliquer les filtres</button>
+                        <button type="submit" class="btn btn-primary mt-3" style="background: #000; color: #fff;">Appliquer les filtres</button>
                     </div>
                 </form>
             </div>
@@ -191,7 +192,7 @@
         </div>
         <div class="film-details">
             <a href="{% url 'movie_detail' movie_id=film.id %}">
-                <h3>{{ film.title }} ({{ film.year }})</h3>
+                <h3 style="color: #fff;">{{ film.title }} ({{ film.year }})</h3>
             </a>
             <span class="genre">{{ film.genre }}</span>
             <p class="average-rating">Note Moyenne : {{ film.average_rating|floatformat:1 }}/5</p>

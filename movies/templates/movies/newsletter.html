@@ -1,0 +1,340 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+   <style>
+                        *{
+                    font-family: 'Jost', sans-serif; /* Applique "Jost" pour tout le corps de la page */
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    list-style: none;
+                    text-decoration: none;
+                    scroll-padding-top: 2rem;
+                    scroll-behavior: smooth;
+                }
+
+                :root{
+                    --main-color: #c0a483;
+                    --text-color: #0a0a0a;
+                    --bg-color:#fff;
+                }
+
+               
+                
+               
+
+                header{
+                    position: fixed;
+                    width: 100%;
+                    top: 0;
+                    right: 0;
+                    /*border: 1px solid #ffffff00;*/
+                    z-index: 1000;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 20px 100px;
+                    transition: 0.5s;
+                    background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+                }
+
+
+
+
+
+                .logo{
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    color: #e9d4d4;
+                    display: flex;
+                    align-items: center;
+                    column-gap: 0.5rem;
+                    z-index: 10; /* Plus grand que -1 */
+                }
+
+                .logo .bx{
+                    font-size: 24px;
+                    color: #1a0d0d;
+                }
+
+                .navbar{
+                    display: flex;
+                    column-gap: 5rem;
+                    color: #0a0a0a;
+                }
+
+                .navbar li{
+                    position: relative;
+                }
+
+                a {
+                text-decoration: none; /* Désactive le soulignement par défaut */
+                }
+
+
+                .navbar a {
+                    position: relative;
+                    display: inline-block;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    color: rgb(243, 246, 246);
+                    padding: 5px 10px;
+                    transition: color 0.4s ease;
+                }
+
+                .navbar a:hover {
+                    color: #fff; /* Change la couleur du texte au survol */
+                }
+
+                .navbar a::after {
+                    content: " ";
+                    position: absolute;
+                    bottom: -4px;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    background: #fff;
+                    transition: width 0.4s ease;
+                }
+
+                .navbar a:hover::after,
+                .navbar .acceuil-active::after {
+                    width: 100%;
+                }
+
+                .connexion {
+                    display: inline-block;
+                    padding: 0.7rem 2rem; /* Ajuster le padding pour donner de l'espace autour du texte */
+                    background-color: rgb(19, 20, 21); /* Fond transparent initialement */
+                    color: var(--main-color); /* Couleur du texte */
+                    font-weight: 600;
+                    font-size: 1rem;
+                    border: none; /* Bordure de la boîte */
+                    border-radius: 0.5rem; /* Coins arrondis */
+                    cursor: pointer;
+                    text-align: center;
+                    transition: all 0.3s ease-in-out; /* Transition fluide pour l'effet */
+                }
+
+                .connexion:hover {
+                    background-color: var(--main-color); /* Fond de la boîte au survol */
+                    color: var(--bg-color); /* Texte de couleur claire au survol */
+                    border-color: var(--main-color); /* Bordure qui reste de la même couleur */
+                }
+
+                .connexion i {
+                    margin-right: 8px; /* Espacement entre l'icône et le texte */
+                    font-size: 1.2rem; /* Taille de l'icône */
+                }
+
+
+                .recherche {
+                    display: flex; /* Utilise flexbox pour aligner horizontalement */
+                    align-items: center; /* Centre verticalement l'icône et le champ */
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    padding: 5px;
+                }
+
+                .recherche i {
+                    font-size: 16px; /* Taille de l'icône */
+                    color: #888; /* Couleur de l'icône */
+                    margin-right: 8px; /* Espace entre l'icône et le champ */
+                }
+
+                .recherche input {
+                    flex: 1; /* Permet au champ de prendre tout l'espace disponible */
+                    border: none;
+                    outline: none;
+                    font-size: 14px;
+                }
+
+                .recherche input::placeholder {
+                    color: #aaa; /* Couleur du placeholder */
+                }
+
+        body{
+            background-color: #000000;
+        }
+        .newsletter-section {
+            background-color: #000000;
+        }
+
+        
+
+        .newsletter-section h2 {
+            color: #ffffff;
+        }
+
+        .newsletter-section .lead {
+            color: #ffffff;
+        }
+
+        .newsletter-form .form-control {
+            border: 2px solid #ced4da;
+            border-radius: 30px 0 0 30px;
+        }
+
+        .newsletter-form .btn-primary {
+            border-radius: 0 30px 30px 0;
+            padding-left: 30px;
+            padding-right: 30px;
+            background-color: #292929;
+            border-color: #0056b3;
+        }
+
+        .newsletter-form .btn-primary:hover {
+            background-color: #303030;
+            border-color: #202121;
+        }
+
+        .newsletter-form .form-check-label {
+            font-size: 0.875rem;
+            color: #ffffff;
+        }
+
+        .newsletter-form .form-check-label a {
+            color: #424548;
+        }
+
+        .newsletter-form .form-check-label a:hover {
+            text-decoration: underline !important;
+        }
+        .modal-content {
+            background-color: transparent; /* Remplacez #333 par la couleur souhaitée */
+            color: #fff; /* Pour que le texte soit lisible, vous pouvez changer la couleur du texte ici */
+        }
+   </style>
+</head>
+
+<body>
+      <!-- Navbar -->
+      <header class="navbar-container">
+        <a href="#" class="logo">
+            <i class='bx bxs-movie'></i>Movies
+        </a>
+        <ul class="navbar">
+            <li><a href="{% url 'index' %}" >Accueil</a></li>
+            <li><a href="{% url 'films' %}">Films</a></li>
+            <li><a href="{% if user.is_authenticated %}{% url 'suggestion' %}{% else %}{% url 'login' %}{% endif %}">Pour-vous</a></li>
+            <li><a href="{% url 'newsletter' %}"class="acceuil-active">Newsletter</a></li>
+            
+        </ul>
+       
+        <a href="{% if user.is_authenticated %}{% url 'dashboard' %}{% else %}{% url 'login' %}{% endif %}" class="connexion">Profil</a>
+         <!-- Conteneur dédié avec lien cliquable -->
+          <a href="{% url 'panier' %}" class="shopping-bag">
+            <i class='bx bx-shopping-bag'></i>
+        </a>
+    </header>
+    <section class="newsletter-section py-5 ">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-4 mb-4">Restez informé</h2>
+                    <p class="lead mb-5">Abonnez-vous à notre newsletter pour recevoir les dernières actualités, mises à jour et offres exclusives.</p>
+                    <form class="newsletter-form" id="newsletter-form" method="POST">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <input 
+                                type="email" 
+                                class="form-control form-control-lg" 
+                                placeholder="Enter your email" 
+                                aria-label="Enter your email" 
+                                name="email" 
+                                {% if user_email %}
+                                    value="{{ user_email }}" 
+                                {% endif %}
+                                required>
+                            <button class="btn btn-primary btn-lg" type="submit">S'inscrire</button>
+                        </div>
+                        <div class="form-check text-start">
+                            <input class="form-check-input" type="checkbox" id="privacyCheck" required>
+                            <label class="form-check-label" for="privacyCheck">
+                                J'accepte <a href="#" class="text-decoration-none">Privacy Policy</a>
+                            </label>
+                        </div>
+                    </form>
+                    <div id="response-message"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="newsletterModal" tabindex="-1" aria-labelledby="newsletterModalLabel" aria-hidden="true" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newsletterModalLabel">Abonnement à la Newsletter</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalMessage">
+                    <!-- Le message de succès ou d'erreur sera inséré ici -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+    <footer class=" text-white" style="color: aliceblue; background-color: rgb(67, 65, 65); margin-top: 310px;">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+           <p>Contactez-nous via : filmsPM@log.com</p>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2025 Copyright:
+          <a class="text-white" href="https://mdbootstrap.com/">filmsPM.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+
+    <script>
+        document.getElementById('newsletter-form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Empêcher le rechargement de la page
+            
+            const email = document.querySelector('input[name="email"]').value;  // Récupérer l'email du formulaire
+            const csrfToken = document.querySelector('[name="csrfmiddlewaretoken"]').value;  // CSRF token
+            
+            console.log('Email envoyé :', email);  // Vérifiez dans la console si l'email est bien récupéré
+            
+            fetch("{% url 'newsletter' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",  // Type de contenu JSON
+                    "X-CSRFToken": csrfToken  // Inclure le token CSRF pour sécurité
+                },
+                body: JSON.stringify({
+                    email: email  // Envoyer l'email dans le corps de la requête
+                })
+            })
+            .then(response => response.json())  // Traiter la réponse JSON
+            .then(data => {
+                const modalMessage = document.getElementById('modalMessage');  // Cibler l'élément du modal
+                if (data.status === "success") {
+                    modalMessage.innerHTML = `<p style="color: green;">${data.message}</p>`;
+                } else {
+                    modalMessage.innerHTML = `<p style="color: red;">${data.message}</p>`;
+                }
+                
+                // Afficher le modal après la réponse
+                const myModal = new bootstrap.Modal(document.getElementById('newsletterModal'));
+                myModal.show();
+            })
+            .catch(error => {
+                console.error('Erreur :', error);  // Log d'erreur pour debugger
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
